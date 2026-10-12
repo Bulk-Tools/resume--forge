@@ -171,6 +171,13 @@ def sig_html(d):
         return ""
     return f'<div class="sig-block"><img src="{esc(durl)}" alt="Signature"></div>'
 
+SECTION_KEYS = ["summary", "experience", "projects", "skills", "education", "certifications", "languages"]
+
+def full_order(cfg):
+    """cfg order plus any standard sections the config omitted (never drop user data)."""
+    o = list(cfg["sections"]["order"])
+    return o + [k for k in SECTION_KEYS if k not in o]
+
 def sig_css():
     return (".sig-block{text-align:right;margin-top:22px}"
             ".sig-block img{max-height:64px;max-width:230px}"
@@ -353,13 +360,13 @@ def page_shape_html(cfg, P):
 # ---------------------------------------------------------------- layouts
 def layout_classic(cfg, d, P):
     secs = "".join(section_block(cfg, k, d, P, i)
-                   for i, k in enumerate(cfg["sections"]["order"]))
+                   for i, k in enumerate(full_order(cfg)))
     return (f'<div class="page">{page_shape_html(cfg, P)}<div class="pad">'
             f'{header_html(cfg, d, P)}{secs}{sig_html(d)}</div></div>')
 
 def layout_sidebar(cfg, d, P, side):
     S = cfg["sidebar"]
-    order = [k for k in cfg["sections"]["order"] if k not in ("skills",)]
+    order = [k for k in full_order(cfg) if k not in ("skills",)]
     main_secs = "".join(section_block(cfg, k, d, P, i) for i, k in enumerate(order))
     contact_items = [
         (ICONS["mail"], d["email"]), (ICONS["phone"], d["phone"]),
@@ -411,7 +418,7 @@ def layout_banner(cfg, d, P):
         f'{photo}<div><div class="bnr-name" style="font-family:\'{df}\',serif">{esc(d["name"])}</div>'
         f'<div class="bnr-title">{esc(d["title"])}</div>{contact_row(d, color="#fff")}</div></div>')
     secs = "".join(section_block(cfg, k, d, P, i)
-                   for i, k in enumerate(cfg["sections"]["order"]))
+                   for i, k in enumerate(full_order(cfg)))
     return (f'<div class="page">{banner}<div class="pad">{secs}{sig_html(d)}</div></div>')
 
 def banner_css():
@@ -426,7 +433,7 @@ def banner_css():
 def layout_timeline(cfg, d, P):
     cfg2 = dict(cfg); cfg2["experience"] = {"style": "timeline"}
     secs = "".join(section_block(cfg2, k, d, P, i)
-                   for i, k in enumerate(cfg["sections"]["order"]))
+                   for i, k in enumerate(full_order(cfg)))
     return (f'<div class="page">{page_shape_html(cfg, P)}<div class="pad">'
             f'{header_html(cfg, d, P)}{secs}{sig_html(d)}</div></div>')
 
@@ -439,7 +446,7 @@ def layout_editorial(cfg, d, P):
             f'<div class="ed-rule" style="background:{P["accent"]}"></div>'
             f'{contact_row(d)}</header>')
     secs = "".join(section_block(cfg, k, d, P, i)
-                   for i, k in enumerate(cfg["sections"]["order"]))
+                   for i, k in enumerate(full_order(cfg)))
     return f'<div class="page"><div class="pad ed">{head}{secs}{sig_html(d)}</div></div>'
 
 def editorial_css(P):
@@ -455,7 +462,7 @@ def editorial_css(P):
 def layout_cards(cfg, d, P):
     cfg2 = dict(cfg); cfg2["experience"] = {"style": "card"}
     secs = "".join(section_block(cfg2, k, d, P, i)
-                   for i, k in enumerate(cfg["sections"]["order"]))
+                   for i, k in enumerate(full_order(cfg)))
     return (f'<div class="page">{page_shape_html(cfg, P)}<div class="pad">'
             f'{header_html(cfg, d, P)}{secs}{sig_html(d)}</div></div>')
 
@@ -467,7 +474,7 @@ def layout_swiss(cfg, d, P):
         f'<div class="sw-cell"><div class="sw-k">{k}</div><div class="sw-v">{esc(v)}</div></div>'
         for k, v in items)
     secs = "".join(section_block(cfg, k, d, P, i)
-                   for i, k in enumerate(cfg["sections"]["order"]))
+                   for i, k in enumerate(full_order(cfg)))
     photo = photo_html(cfg, d, P)
     grid_html = (f'<div class="sw-grid" style="border-color:{P["rule"]}">{grid}</div>')
     top = f'<div class="sw-top">{photo}{grid_html}</div>' if photo else grid_html
@@ -495,7 +502,7 @@ def layout_creative(cfg, d, P):
             f'<div class="cr-name" style="font-family:\'{df}\',serif">{esc(d["name"])}</div></div>'
             f'{photo}</header>')
     secs = "".join(section_block(cfg, k, d, P, i)
-                   for i, k in enumerate(cfg["sections"]["order"]))
+                   for i, k in enumerate(full_order(cfg)))
     return f'<div class="page"><div class="pad">{head}{secs}{sig_html(d)}</div></div>'
 
 def creative_css(P):
@@ -516,8 +523,8 @@ def layout_compact(cfg, d, P):
             f'{esc(d["title"])}</div></div>'
             f'<div class="cp-contact">{esc(d["email"])} · {esc(d["phone"])}<br>'
             f'{esc(d["location"])} · {esc(d["website"])}</div></header>')
-    main_keys = [k for k in cfg["sections"]["order"] if k in ("summary", "experience", "projects")]
-    side_keys = [k for k in cfg["sections"]["order"] if k in ("skills", "education", "certifications", "languages")]
+    main_keys = [k for k in full_order(cfg) if k in ("summary", "experience", "projects")]
+    side_keys = [k for k in full_order(cfg) if k in ("skills", "education", "certifications", "languages")]
     main = "".join(section_block(cfg, k, d, P, i) for i, k in enumerate(main_keys))
     side = "".join(section_block(cfg, k, d, P, i) for i, k in enumerate(side_keys))
     return (f'<div class="page"><div class="pad"><div class="cp-wrap">'

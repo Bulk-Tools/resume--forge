@@ -16,11 +16,11 @@
       div.className = "exp-entry";
       div.innerHTML =
         `<div class="en">Position ${n + 1}</div>` +
-        `<div class="field"><label>Role</label><input data-exp="${n}" data-f="role"></div>` +
-        `<div class="field"><label>Company</label><input data-exp="${n}" data-f="company"></div>` +
-        `<div class="field"><label>Period</label><input data-exp="${n}" data-f="period" placeholder="2022 — Present"></div>` +
-        `<div class="field"><label>Location</label><input data-exp="${n}" data-f="location"></div>` +
-        `<div class="field"><label>Achievements</label><textarea data-exp="${n}" data-f="bullets" rows="3"></textarea></div>`;
+        `<div class="field"><label for="exp${n}_role">Role</label><input id="exp${n}_role" data-exp="${n}" data-f="role"></div>` +
+        `<div class="field"><label for="exp${n}_company">Company</label><input id="exp${n}_company" data-exp="${n}" data-f="company"></div>` +
+        `<div class="field"><label for="exp${n}_period">Period</label><input id="exp${n}_period" data-exp="${n}" data-f="period" placeholder="2022 — Present"></div>` +
+        `<div class="field"><label for="exp${n}_location">Location</label><input id="exp${n}_location" data-exp="${n}" data-f="location"></div>` +
+        `<div class="field"><label for="exp${n}_bullets">Achievements</label><textarea id="exp${n}_bullets" data-exp="${n}" data-f="bullets" rows="3"></textarea></div>`;
       wrap.appendChild(div);
     }
   }
@@ -31,10 +31,10 @@
       div.className = "exp-entry";
       div.innerHTML =
         `<div class="en">Education ${n + 1}</div>` +
-        `<div class="field"><label>Degree</label><input data-edu="${n}" data-f="degree"></div>` +
-        `<div class="field"><label>School</label><input data-edu="${n}" data-f="school"></div>` +
-        `<div class="field"><label>Period</label><input data-edu="${n}" data-f="period"></div>` +
-        `<div class="field"><label>Detail</label><input data-edu="${n}" data-f="detail"></div>`;
+        `<div class="field"><label for="edu${n}_degree">Degree</label><input id="edu${n}_degree" data-edu="${n}" data-f="degree"></div>` +
+        `<div class="field"><label for="edu${n}_school">School</label><input id="edu${n}_school" data-edu="${n}" data-f="school"></div>` +
+        `<div class="field"><label for="edu${n}_period">Period</label><input id="edu${n}_period" data-edu="${n}" data-f="period"></div>` +
+        `<div class="field"><label for="edu${n}_detail">Detail</label><input id="edu${n}_detail" data-edu="${n}" data-f="detail"></div>`;
       wrap.appendChild(div);
     }
   }
@@ -130,6 +130,8 @@
   function fillForm(d) {
     const set = (k, v) => { const el = form.querySelector(`[data-k="${k}"]`); if (el) el.value = v || ""; };
     ["name", "title", "email", "phone", "location", "website", "linkedin", "summary"].forEach(k => set(k, d[k]));
+    /* clear repeatable slots first so stale entries never survive a sample load */
+    form.querySelectorAll("[data-exp], [data-edu]").forEach(el => { el.value = ""; });
     (d.experience || []).slice(0, 3).forEach((j, n) => {
       ["role", "company", "period", "location"].forEach(f => {
         const el = form.querySelector(`[data-exp="${n}"][data-f="${f}"]`); if (el) el.value = j[f] || "";

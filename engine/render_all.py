@@ -32,7 +32,7 @@ def main():
         sys.exit(1)
     # sort: layout then name for stable registry
     registry.sort(key=lambda c: (c["layout"], c["name"]))
-    reg_path = os.path.join(ROOT, "templates", "registry.json")
+    reg_path = os.path.join(ROOT, "docs", "registry.json")
     json.dump(registry, open(reg_path, "w"), indent=1)
     print(f"registry: {len(registry)} templates -> {reg_path}")
 

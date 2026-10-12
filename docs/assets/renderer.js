@@ -58,6 +58,13 @@ p{margin:0}
 `;
 }
 
+const RF_SECTION_KEYS = ["summary", "experience", "projects", "skills", "education", "certifications", "languages"];
+function rfFullOrder(cfg) {
+  const o = cfg.sections.order.slice();
+  RF_SECTION_KEYS.forEach(k => { if (!o.includes(k)) o.push(k); });
+  return o;
+}
+
 function rfSectionTitle(cfg, text, idx) {
   idx = idx || 0;
   const st = cfg.section_title;
@@ -311,13 +318,13 @@ function rfPageShapeHtml(cfg, P) {
 /* ---- layouts ---- */
 
 function rfLayoutClassic(cfg, d, P) {
-  const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
+  const secs = rfFullOrder(cfg).map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
   return `<div class="page">${rfPageShapeHtml(cfg, P)}<div class="pad">${rfHeaderHtml(cfg, d, P)}${secs}${rfSigHtml(d)}</div></div>`;
 }
 
 function rfLayoutSidebar(cfg, d, P, side) {
   const S = cfg.sidebar;
-  const order = cfg.sections.order.filter(k => k !== "skills");
+  const order = rfFullOrder(cfg).filter(k => k !== "skills");
   const mainSecs = order.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
   const contactItems = [[RF_ICONS.mail, d.email], [RF_ICONS.phone, d.phone], [RF_ICONS.pin, d.location], [RF_ICONS.web, d.website], [RF_ICONS.link, d.linkedin]];
   const sideContact = contactItems.map(([ic, v]) => `<div class="s-c"><span class="s-ic">${ic}</span><span>${rfEsc(v)}</span></div>`).join("");
@@ -361,7 +368,7 @@ function rfLayoutBanner(cfg, d, P) {
   const banner = `<div class="bnr" style="background:${P.accent};color:#fff">${photo}<div>` +
     `<div class="bnr-name" style="font-family:'${df}',serif">${rfEsc(d.name)}</div>` +
     `<div class="bnr-title">${rfEsc(d.title)}</div>${rfContactRow(d, "#fff")}</div></div>`;
-  const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
+  const secs = rfFullOrder(cfg).map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
   return `<div class="page">${banner}<div class="pad">${secs}${rfSigHtml(d)}</div></div>`;
 }
 
@@ -377,7 +384,7 @@ function rfBannerCss() {
 
 function rfLayoutTimeline(cfg, d, P) {
   const cfg2 = Object.assign({}, cfg, { experience: { style: "timeline" } });
-  const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg2, k, d, P, i)).join("");
+  const secs = rfFullOrder(cfg).map((k, i) => rfSectionBlock(cfg2, k, d, P, i)).join("");
   return `<div class="page">${rfPageShapeHtml(cfg, P)}<div class="pad">${rfHeaderHtml(cfg, d, P)}${secs}${rfSigHtml(d)}</div></div>`;
 }
 
@@ -386,7 +393,7 @@ function rfLayoutEditorial(cfg, d, P) {
   const head = `<header class="ed-head">${photo}<div class="ed-name" style="font-family:'${df}',serif">${rfEsc(d.name)}</div>` +
     `<div class="ed-title" style="color:${P.accent}">${rfEsc(d.title)} &nbsp;·&nbsp; ${rfEsc(d.location)}</div>` +
     `<div class="ed-rule" style="background:${P.accent}"></div>${rfContactRow(d)}</header>`;
-  const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
+  const secs = rfFullOrder(cfg).map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
   return `<div class="page"><div class="pad ed">${head}${secs}${rfSigHtml(d)}</div></div>`;
 }
 
@@ -403,14 +410,14 @@ function rfEditorialCss() {
 
 function rfLayoutCards(cfg, d, P) {
   const cfg2 = Object.assign({}, cfg, { experience: { style: "card" } });
-  const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg2, k, d, P, i)).join("");
+  const secs = rfFullOrder(cfg).map((k, i) => rfSectionBlock(cfg2, k, d, P, i)).join("");
   return `<div class="page">${rfPageShapeHtml(cfg, P)}<div class="pad">${rfHeaderHtml(cfg, d, P)}${secs}${rfSigHtml(d)}</div></div>`;
 }
 
 function rfLayoutSwiss(cfg, d, P) {
   const cells = [["Name", d.name], ["Title", d.title], ["Mail", d.email], ["Phone", d.phone], ["Place", d.location], ["Web", d.website]];
   const grid = cells.map(([k, v]) => `<div class="sw-cell"><div class="sw-k">${k}</div><div class="sw-v">${rfEsc(v)}</div></div>`).join("");
-  const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
+  const secs = rfFullOrder(cfg).map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
   const photo = rfPhotoHtml(cfg, d, P);
   const gridHtml = `<div class="sw-grid" style="border-color:${P.rule}">${grid}</div>`;
   const top = photo ? `<div class="sw-top">${photo}${gridHtml}</div>` : gridHtml;
@@ -437,7 +444,7 @@ function rfLayoutCreative(cfg, d, P) {
   const head = `<header class="cr-head"><div class="cr-geo" style="background:${P.accent2}"></div><div>` +
     `<div class="cr-kicker" style="color:${P.accent}">Résumé — ${rfEsc(d.title)}</div>` +
     `<div class="cr-name" style="font-family:'${df}',serif">${rfEsc(d.name)}</div></div>${photo}</header>`;
-  const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
+  const secs = rfFullOrder(cfg).map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
   return `<div class="page"><div class="pad">${head}${secs}${rfSigHtml(d)}</div></div>`;
 }
 
@@ -458,8 +465,8 @@ function rfLayoutCompact(cfg, d, P) {
   const head = `<header class="${headCls}">${photo}<div><div class="cp-name" style="font-family:'${df}',serif">${rfEsc(d.name)}</div>` +
     `<div class="cp-title" style="color:${P.accent}">${rfEsc(d.title)}</div></div>` +
     `<div class="cp-contact">${rfEsc(d.email)} · ${rfEsc(d.phone)}<br>${rfEsc(d.location)} · ${rfEsc(d.website)}</div></header>`;
-  const mainKeys = cfg.sections.order.filter(k => ["summary", "experience", "projects"].includes(k));
-  const sideKeys = cfg.sections.order.filter(k => ["skills", "education", "certifications", "languages"].includes(k));
+  const mainKeys = rfFullOrder(cfg).filter(k => ["summary", "experience", "projects"].includes(k));
+  const sideKeys = rfFullOrder(cfg).filter(k => ["skills", "education", "certifications", "languages"].includes(k));
   const main = mainKeys.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
   const side = sideKeys.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
   return `<div class="page"><div class="pad"><div class="cp-wrap"><div class="cp-main">${head}${main}${rfSigHtml(d)}</div>` +
