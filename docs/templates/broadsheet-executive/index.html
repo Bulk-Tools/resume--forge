@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broadsheet Executive — Résumé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;0,900;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  @page { size:A4; margin:0; }
+  html, body { background:#e9e6dd; }
+  body { font-family:'Inter',sans-serif; display:flex; justify-content:center; padding:24px 0; }
+  .page {
+    width:794px; min-height:1123px; background:#FDFCF7; color:#141414;
+    padding:52px 56px 60px; position:relative;
+    box-shadow:0 4px 28px rgba(0,0,0,.18);
+  }
+  @media print { body{background:#fff;padding:0;display:block} .page{box-shadow:none} }
+
+  /* ---- newspaper furniture ---- */
+  .top-line {
+    display:flex; justify-content:space-between;
+    font-size:10px; font-weight:600; letter-spacing:.32em; text-transform:uppercase;
+    color:#6b6b6b; border-bottom:1px solid #141414; padding-bottom:8px; margin-bottom:26px;
+  }
+  .masthead { text-align:center; position:relative; margin-bottom:18px; }
+  .masthead h1 {
+    font-family:'Playfair Display',serif; font-weight:900; font-size:58px;
+    line-height:1; letter-spacing:-.01em; color:#141414;
+  }
+  .mast-sub {
+    font-family:'Playfair Display',serif; font-style:italic; font-weight:500;
+    font-size:19px; color:#B91C1C; margin-top:10px;
+  }
+  .press-photo {
+    position:absolute; right:0; top:6px; width:92px; text-align:center;
+  }
+  .press-photo img, .press-photo .initials {
+    width:92px; height:110px; object-fit:cover; display:block;
+    border:1px solid #141414; background:#fff;
+  }
+  .press-photo .initials {
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display',serif; font-weight:800; font-size:30px;
+    color:#B91C1C; border:1px solid #B91C1C;
+  }
+  .press-photo figcaption {
+    font-size:8px; letter-spacing:.22em; text-transform:uppercase;
+    color:#6b6b6b; margin-top:5px;
+  }
+  .dateline {
+    border-top:4px double #141414; border-bottom:1px solid #141414;
+    padding:9px 4px; text-align:center;
+    font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+    color:#444; margin-bottom:6px;
+  }
+  .dateline .sep { color:#B91C1C; margin:0 7px; font-weight:700; }
+
+  /* ---- section kickers ---- */
+  .kicker {
+    display:flex; align-items:center; gap:14px; margin:28px 0 16px;
+  }
+  .kicker::before, .kicker::after {
+    content:""; flex:1; border-top:4px double #141414;
+  }
+  .kicker span {
+    font-size:12px; font-weight:700; letter-spacing:.38em; text-transform:uppercase;
+    color:#B91C1C; white-space:nowrap; padding-left:.38em;
+  }
+
+  /* ---- summary with drop cap ---- */
+  .summary {
+    font-size:13.5px; line-height:1.85; color:#262626; text-align:justify;
+    hyphens:auto; column-gap:0;
+  }
+  .summary::first-letter {
+    font-family:'Playfair Display',serif; font-weight:900; font-size:54px;
+    float:left; line-height:.82; padding:4px 10px 0 0; color:#B91C1C;
+  }
+
+  /* ---- experience in two columns ---- */
+  .exp-cols { columns:2; column-gap:30px; }
+  .job { break-inside:avoid; margin-bottom:20px; }
+  .job .role {
+    font-family:'Playfair Display',serif; font-weight:700; font-size:17px;
+    line-height:1.25; color:#141414;
+  }
+  .job .meta {
+    font-size:10.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+    color:#8a8a8a; margin:5px 0 8px;
+  }
+  .job .meta .co { color:#B91C1C; }
+  .job ul { list-style:none; }
+  .job li {
+    font-size:12.5px; line-height:1.7; color:#333; padding-left:16px;
+    position:relative; margin-bottom:4px; text-align:left;
+  }
+  .job li::before {
+    content:"—"; position:absolute; left:0; color:#B91C1C; font-weight:700;
+  }
+
+  /* ---- education ---- */
+  .edu { margin-bottom:14px; }
+  .edu .deg {
+    font-family:'Playfair Display',serif; font-weight:700; font-size:15.5px;
+  }
+  .edu .sch {
+    font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+    color:#8a8a8a; margin-top:3px;
+  }
+  .edu .det { font-size:12.5px; color:#333; margin-top:4px; line-height:1.65; }
+
+  /* ---- comma lists ---- */
+  .comma-list {
+    font-size:13px; line-height:2; color:#262626;
+  }
+  .comma-list b { font-weight:600; }
+  .comma-list .lvl { color:#8a8a8a; font-size:11.5px; }
+
+  /* ---- projects ---- */
+  .proj { margin-bottom:12px; }
+  .proj .pname {
+    font-family:'Playfair Display',serif; font-weight:700; font-size:15px;
+    display:inline;
+  }
+  .proj .pname::after { content:" — "; color:#B91C1C; }
+  .proj .pdet { font-size:12.5px; color:#333; display:inline; line-height:1.65; }
+
+  /* ---- signature ---- */
+  .sig-block { text-align:right; margin-top:30px; }
+  .sig-block img { max-height:70px; max-width:240px; }
+  .sig-block .sig-rule {
+    width:200px; border-top:1px solid #141414; margin:4px 0 0 auto;
+  }
+  .sig-block .sig-cap {
+    font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#8a8a8a;
+    margin-top:5px;
+  }
+  .colophon {
+    margin-top:36px; border-top:1px solid #141414; padding-top:10px;
+    display:flex; justify-content:space-between;
+    font-size:9px; letter-spacing:.26em; text-transform:uppercase; color:#8a8a8a;
+  }
+</style>
+</head>
+<body>
+<div class="page" id="page"></div>
+<script>
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+
+function initials(name){
+  var p=String(name||"").trim().split(/\s+/).filter(Boolean);
+  return ((p[0]?p[0][0]:"")+(p[1]?p[1][0]:"")).toUpperCase()||"•";
+}
+
+function kicker(label){return '<div class="kicker"><span>'+esc(label)+'</span></div>';}
+
+function contactLine(d){
+  var bits=[];
+  if(d.location)bits.push(esc(d.location));
+  if(d.email)bits.push(esc(d.email));
+  if(d.phone)bits.push(esc(d.phone));
+  if(d.website)bits.push(esc(d.website));
+  if(d.linkedin)bits.push(esc(d.linkedin));
+  return bits.join('<span class="sep">·</span>');
+}
+
+function photoBlock(d){
+  var inner = d.photoDataUrl
+    ? '<img src="'+esc(d.photoDataUrl)+'" alt="Portrait">'
+    : '<div class="initials">'+esc(initials(d.name))+'</div>';
+  return '<figure class="press-photo">'+inner+'<figcaption>Portrait</figcaption></figure>';
+}
+
+function summarySec(d){
+  if(!d.summary)return "";
+  return kicker("Profile")+'<p class="summary">'+esc(d.summary)+'</p>';
+}
+
+function experienceSec(d){
+  if(!d.experience||!d.experience.length)return "";
+  var jobs=d.experience.map(function(j){
+    var bullets=(j.bullets||[]).map(function(b){return '<li>'+esc(b)+'</li>';}).join("");
+    var meta=[j.company?'<span class="co">'+esc(j.company)+'</span>':"",
+              j.period?esc(j.period):"", j.location?esc(j.location):""]
+              .filter(Boolean).join(" &nbsp;·&nbsp; ");
+    return '<article class="job"><div class="role">'+esc(j.role||"")+'</div>'+
+      (meta?'<div class="meta">'+meta+'</div>':"")+
+      (bullets?'<ul>'+bullets+'</ul>':"")+'</article>';
+  }).join("");
+  return kicker("Experience")+'<div class="exp-cols">'+jobs+'</div>';
+}
+
+function educationSec(d){
+  if(!d.education||!d.education.length)return "";
+  var items=d.education.map(function(e){
+    var sch=[e.school,e.period].filter(Boolean).map(esc).join(" &nbsp;·&nbsp; ");
+    return '<div class="edu"><div class="deg">'+esc(e.degree||"")+'</div>'+
+      (sch?'<div class="sch">'+sch+'</div>':"")+
+      (e.detail?'<div class="det">'+esc(e.detail)+'</div>':"")+'</div>';
+  }).join("");
+  return kicker("Education")+items;
+}
+
+function skillsSec(d){
+  if(!d.skills||!d.skills.length)return "";
+  var list=d.skills.map(function(s){
+    return '<b>'+esc(s.name)+'</b>'+(s.level!=null&&s.level!==""?' <span class="lvl">'+esc(s.level)+'%</span>':"");
+  }).join(", &nbsp;");
+  return kicker("Skills")+'<p class="comma-list">'+list+'</p>';
+}
+
+function projectsSec(d){
+  if(!d.projects||!d.projects.length)return "";
+  var items=d.projects.map(function(p){
+    return '<div class="proj"><span class="pname">'+esc(p.name)+'</span>'+
+      '<span class="pdet">'+esc(p.detail||"")+'</span></div>';
+  }).join("");
+  return kicker("Projects")+items;
+}
+
+function certsSec(d){
+  if(!d.certifications||!d.certifications.length)return "";
+  return kicker("Certifications")+'<p class="comma-list">'+d.certifications.map(esc).join(", &nbsp;")+'</p>';
+}
+
+function langsSec(d){
+  if(!d.languages||!d.languages.length)return "";
+  return kicker("Languages")+'<p class="comma-list">'+d.languages.map(esc).join(", &nbsp;")+'</p>';
+}
+
+function sigBlock(d){
+  if(!d.signatureDataUrl)return "";
+  return '<div class="sig-block"><img src="'+esc(d.signatureDataUrl)+'" alt="Signature">'+
+    '<div class="sig-rule"></div><div class="sig-cap">Signed</div></div>';
+}
+
+window.renderResume=function(d){
+  d=d||{};
+  if(!d.name)d.name="Your Name";
+  var html=
+    '<div class="top-line"><span>Résumé</span><span>Est. MMXXVI</span></div>'+
+    '<header class="masthead">'+photoBlock(d)+
+      '<h1>'+esc(d.name)+'</h1>'+
+      (d.title?'<div class="mast-sub">'+esc(d.title)+'</div>':"")+
+    '</header>'+
+    '<div class="dateline">'+contactLine(d)+'</div>'+
+    summarySec(d)+experienceSec(d)+educationSec(d)+skillsSec(d)+
+    projectsSec(d)+certsSec(d)+langsSec(d)+
+    sigBlock(d)+
+    '<div class="colophon"><span>Printed from ResumeForge</span><span>Page 1 of 1</span></div>';
+  document.getElementById("page").innerHTML=html;
+};
+
+var DEFAULT_DATA={
+  name:"Danish Ali",title:"Senior Backend Engineer",
+  email:"danish.ali@example.com",phone:"+92 300 1234567",location:"Lahore, Pakistan",
+  website:"danishali.dev",linkedin:"linkedin.com/in/danishali",
+  summary:"Backend engineer with eight years of experience designing distributed systems that stay fast under pressure. I specialise in event-driven architectures, database performance, and leading small teams that ship reliably. My work has processed tens of millions of events a day and cut infrastructure costs by double digits.",
+  experience:[
+    {role:"Senior Backend Engineer",company:"CraftNest Systems",period:"2021 — Present",location:"Lahore",
+     bullets:["Led the migration of a monolith to event-driven microservices, cutting deploy time by 70%.","Built an ingestion pipeline processing 40M events per day at p99 latency under 200ms.","Mentored a team of five engineers; introduced RFC culture and on-call rotation."]},
+    {role:"Software Engineer",company:"DataWorks",period:"2018 — 2021",location:"Karachi",
+     bullets:["Shipped a payments API serving 2M requests per day with 99.99% uptime.","Rebuilt the reporting engine on ClickHouse; queries went from minutes to seconds."]}
+  ],
+  education:[
+    {degree:"BS Computer Science",school:"Virtual University of Pakistan",period:"2014 — 2018",detail:"Graduated with distinction; final-year project on distributed key-value stores."}
+  ],
+  skills:[{name:"Python",level:95},{name:"Go",level:82},{name:"PostgreSQL",level:90},{name:"Kafka",level:85},{name:"Kubernetes",level:76}],
+  projects:[{name:"LedgerCore",detail:"Open-source double-entry ledger engine; 2,100+ GitHub stars."}],
+  certifications:["AWS Solutions Architect — Associate","Certified Kubernetes Administrator"],
+  languages:["English — Fluent","Urdu — Native"],
+  photoDataUrl:"",signatureDataUrl:""
+};
+
+document.addEventListener("DOMContentLoaded",function(){window.renderResume(DEFAULT_DATA);});
+</script>
+</body>
+</html>

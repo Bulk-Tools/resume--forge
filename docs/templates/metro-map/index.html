@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metro Map — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: A4; margin: 0; }
+  html, body { background: #E7E5E4; }
+  body { font-family: 'Inter', sans-serif; color: #1C1917; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 794px; min-height: 1123px; margin: 0 auto; background: #FFFFFF; padding: 52px 56px 48px; position: relative; }
+
+  /* ---------- header ---------- */
+  .hdr { display: flex; align-items: flex-start; gap: 24px; margin-bottom: 10px; }
+  .hdr-text { flex: 1; }
+  .name { font-family: 'Archivo Black', sans-serif; font-size: 44px; line-height: 1.02; letter-spacing: -0.01em; color: #1C1917; }
+  .title { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.22em; text-transform: uppercase; color: #DC2626; margin-top: 10px; }
+  .contact { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #57534E; margin-top: 12px; line-height: 1.9; }
+  .contact span { margin-right: 14px; white-space: nowrap; }
+  .avatar { width: 92px; height: 92px; flex: none; border-radius: 50%; border: 4px solid #DC2626; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 30px; color: #fff; background: #1C1917; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .summary { font-size: 13.5px; line-height: 1.7; color: #44403C; margin: 18px 0 30px; padding-left: 18px; border-left: 3px solid #DC2626; max-width: 640px; }
+
+  /* ---------- line labels ---------- */
+  .line-label { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; background: #DC2626; border-radius: 999px; padding: 6px 14px; margin: 6px 0 18px; }
+  .line-label.stone { background: #78716C; }
+
+  /* ---------- career line (crimson, thick) ---------- */
+  .line { position: relative; margin-left: 9px; padding-left: 42px; }
+  .line::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 5px; border-radius: 3px; background: #DC2626; }
+  .line.thin::before { width: 2px; background: #D6D3D1; left: 1px; }
+  .station { position: relative; padding: 2px 0 26px; }
+  .station:last-child { padding-bottom: 6px; }
+  .station::before { content: ""; position: absolute; left: -42px; top: 4px; width: 17px; height: 17px; border-radius: 50%; background: #fff; border: 5px solid #DC2626; transform: translateX(-8px); }
+  .line.thin .station::before { width: 11px; height: 11px; border: 3px solid #A8A29E; transform: translateX(-5px); top: 6px; }
+  .station.interchange::before { border-radius: 4px; }
+  .station-tag { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #DC2626; margin-bottom: 5px; }
+  .line.thin .station-tag { color: #78716C; }
+  .role { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 16px; color: #1C1917; }
+  .station-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #57534E; margin: 4px 0 8px; }
+  .bullets { list-style: none; }
+  .bullets li { font-size: 12.5px; line-height: 1.65; color: #44403C; padding-left: 16px; position: relative; margin-bottom: 3px; }
+  .bullets li::before { content: "–"; position: absolute; left: 0; color: #DC2626; font-weight: 700; }
+  .detail { font-size: 12.5px; line-height: 1.65; color: #44403C; }
+
+  .sec { margin-top: 30px; }
+
+  /* ---------- interchanges (skills pills) ---------- */
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #1C1917; border: 1.5px solid #DC2626; border-radius: 999px; padding: 6px 13px; background: #FEF2F2; }
+
+  /* ---------- footer notes ---------- */
+  .notes { display: flex; gap: 36px; margin-top: 30px; }
+  .note-col { flex: 1; }
+  .note-h { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #78716C; margin-bottom: 10px; }
+  .note-item { font-size: 12.5px; color: #44403C; margin-bottom: 6px; line-height: 1.5; }
+
+  .sig { position: absolute; right: 56px; bottom: 40px; text-align: right; }
+  .sig img { max-height: 60px; max-width: 220px; }
+  .legend { margin-top: 34px; padding-top: 14px; border-top: 1px solid #E7E5E4; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #A8A29E; letter-spacing: 0.08em; }
+  @media print { html, body { background: #fff; } .page { margin: 0; } }
+</style>
+</head>
+<body>
+<div class="page" id="page"></div>
+<script>
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+function initials(name) {
+  const p = String(name || "").trim().split(/\s+/).filter(Boolean);
+  return ((p[0] ? p[0][0] : "Y") + (p[1] ? p[1][0] : "")).toUpperCase();
+}
+
+const DEFAULT_DATA = {
+  name: "Danish Ali",
+  title: "Senior Backend Engineer",
+  email: "danish.ali@example.com",
+  phone: "+92 300 1234567",
+  location: "Lahore, Pakistan",
+  website: "danishali.dev",
+  linkedin: "linkedin.com/in/danishali",
+  summary: "Backend engineer with 8 years building distributed systems that move money and data at scale. I design for failure, measure everything, and ship boring technology that works.",
+  experience: [
+    { role: "Senior Backend Engineer", company: "LedgerCore", period: "2021 — Present", location: "Lahore",
+      bullets: ["Led migration of the payments pipeline to an event-driven architecture, cutting p99 latency from 900ms to 120ms", "Built idempotency and reconciliation layers processing 2M+ transactions daily with zero data loss"] },
+    { role: "Backend Engineer", company: "DataBridge", period: "2018 — 2021", location: "Karachi",
+      bullets: ["Designed multi-tenant Postgres schemas serving 400+ enterprise clients", "Cut infrastructure cost 38% by moving batch workloads to spot instances"] },
+    { role: "Software Engineer", company: "PixelForge", period: "2016 — 2018", location: "Remote",
+      bullets: ["Shipped REST APIs used by 1M+ monthly active users", "Introduced CI pipelines that reduced deploy time from hours to 9 minutes"] }
+  ],
+  education: [
+    { degree: "BS Computer Science", school: "Virtual University of Pakistan", period: "2012 — 2016", detail: "Graduated with distinction; final-year project on distributed key-value stores" }
+  ],
+  skills: [
+    { name: "Python", level: 95 }, { name: "Go", level: 80 }, { name: "PostgreSQL", level: 90 },
+    { name: "Kubernetes", level: 75 }, { name: "Redis", level: 85 }, { name: "AWS", level: 80 }
+  ],
+  projects: [
+    { name: "PulseMQ", detail: "High-throughput message queue in Go, 120k msg/s on a single node" },
+    { name: "SchemaGuard", detail: "Postgres migration linter adopted by 3 engineering teams" }
+  ],
+  certifications: ["AWS Solutions Architect", "Certified Kubernetes Administrator"],
+  languages: ["English", "Urdu"],
+  photoDataUrl: "", signatureDataUrl: ""
+};
+
+function renderResume(d) {
+  d = d || {};
+  const name = (d.name || "").trim() || "Your Name";
+  const page = document.getElementById("page");
+
+  const contactBits = [d.email, d.phone, d.location, d.website, d.linkedin]
+    .filter(Boolean).map(x => "<span>" + esc(x) + "</span>").join("");
+  const avatar = d.photoDataUrl
+    ? '<div class="avatar"><img src="' + esc(d.photoDataUrl) + '" alt="Photo"></div>'
+    : '<div class="avatar">' + esc(initials(name)) + "</div>";
+
+  let h = '<div class="hdr"><div class="hdr-text">'
+    + '<div class="name">' + esc(name) + "</div>"
+    + (d.title ? '<div class="title">' + esc(d.title) + "</div>" : "")
+    + (contactBits ? '<div class="contact">' + contactBits + "</div>" : "")
+    + "</div>" + avatar + "</div>";
+
+  if (d.summary) h += '<p class="summary">' + esc(d.summary) + "</p>";
+
+  /* ---- CAREER LINE ---- */
+  const jobs = (d.experience || []).filter(j => j && (j.role || j.company));
+  if (jobs.length) {
+    h += '<div class="sec"><span class="line-label">\u25CF Career Line</span><div class="line">';
+    jobs.forEach((j, i) => {
+      h += '<div class="station' + (i === 0 ? " interchange" : "") + '">'
+        + '<div class="station-tag">Station 0' + (i + 1) + " \u00B7 " + esc(j.period || "Present") + "</div>"
+        + '<div class="role">' + esc(j.role || "") + "</div>"
+        + '<div class="station-label">' + esc([j.company, j.location].filter(Boolean).join(" \u2014 ")) + "</div>";
+      const bl = (j.bullets || []).filter(Boolean);
+      if (bl.length) {
+        h += '<ul class="bullets">' + bl.map(b => "<li>" + esc(b) + "</li>").join("") + "</ul>";
+      }
+      h += "</div>";
+    });
+    h += "</div></div>";
+  }
+
+  /* ---- INTERCHANGES (skills) ---- */
+  const skills = (d.skills || []).filter(s => s && s.name);
+  if (skills.length) {
+    h += '<div class="sec"><span class="line-label">\u25C8 Interchanges</span><div class="pills">'
+      + skills.map(s => '<span class="pill">' + esc(s.name) + (s.level != null ? " \u00B7 " + esc(s.level) + "%" : "") + "</span>").join("")
+      + "</div></div>";
+  }
+
+  /* ---- BRANCH LINE (projects) ---- */
+  const projs = (d.projects || []).filter(p => p && p.name);
+  if (projs.length) {
+    h += '<div class="sec"><span class="line-label stone">\u25CF Branch Line \u2014 Projects</span><div class="line thin">';
+    projs.forEach(p => {
+      h += '<div class="station"><div class="role" style="font-size:14px">' + esc(p.name) + "</div>"
+        + (p.detail ? '<div class="detail">' + esc(p.detail) + "</div>" : "") + "</div>";
+    });
+    h += "</div></div>";
+  }
+
+  /* ---- EDUCATION LINE (stone, thin) ---- */
+  const edu = (d.education || []).filter(e => e && (e.degree || e.school));
+  if (edu.length) {
+    h += '<div class="sec"><span class="line-label stone">\u25CF Education Line</span><div class="line thin">';
+    edu.forEach(e => {
+      h += '<div class="station"><div class="station-tag">' + esc(e.period || "") + "</div>"
+        + '<div class="role" style="font-size:14px">' + esc(e.degree || "") + "</div>"
+        + '<div class="station-label">' + esc(e.school || "") + "</div>"
+        + (e.detail ? '<div class="detail">' + esc(e.detail) + "</div>" : "") + "</div>";
+    });
+    h += "</div></div>";
+  }
+
+  /* ---- service notes: certs + languages ---- */
+  const certs = (d.certifications || []).filter(Boolean);
+  const langs = (d.languages || []).filter(Boolean);
+  if (certs.length || langs.length) {
+    h += '<div class="notes">';
+    if (certs.length) h += '<div class="note-col"><div class="note-h">Service Advisories \u2014 Certifications</div>'
+      + certs.map(c => '<div class="note-item">\u2713 ' + esc(c) + "</div>").join("") + "</div>";
+    if (langs.length) h += '<div class="note-col"><div class="note-h">Announcements \u2014 Languages</div>'
+      + langs.map(l => '<div class="note-item">' + esc(l) + "</div>").join("") + "</div>";
+    h += "</div>";
+  }
+
+  if (d.signatureDataUrl) {
+    h += '<div class="sig"><img src="' + esc(d.signatureDataUrl) + '" alt="Signature"></div>';
+  }
+
+  h += '<div class="legend">M1 \u00B7 CAREER LINE \u2014 ALL STATIONS OPERATIONAL \u00B7 MIND THE GAP</div>';
+  page.innerHTML = h;
+}
+window.renderResume = renderResume;
+
+document.addEventListener("DOMContentLoaded", function () { renderResume(DEFAULT_DATA); });
+</script>
+</body>
+</html>

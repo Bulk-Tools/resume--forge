@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spec Sheet — Résumé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  @page { size:A4; margin:0; }
+  html, body { background:#dfe3ea; }
+  body { font-family:'Inter',sans-serif; display:flex; justify-content:center; padding:24px 0; }
+  .page {
+    width:794px; min-height:1123px; background:#ffffff; color:#111827;
+    background-image:
+      linear-gradient(rgba(29,78,216,.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(29,78,216,.055) 1px, transparent 1px);
+    background-size:24px 24px;
+    padding:48px 54px 56px; position:relative;
+    box-shadow:0 4px 28px rgba(0,0,0,.16);
+  }
+  @media print { body{background:#fff;padding:0;display:block} .page{box-shadow:none} }
+
+  /* ---- drawing title block ---- */
+  .title-block {
+    border:2px solid #111827; padding:22px 24px; position:relative; margin-bottom:0;
+    background:#fff;
+  }
+  .doc-no {
+    position:absolute; top:-11px; right:18px; background:#111827; color:#fff;
+    font-family:'JetBrains Mono',monospace; font-size:9.5px; font-weight:700;
+    letter-spacing:.14em; padding:3px 10px;
+  }
+  .title-block h1 {
+    font-family:'Archivo Black',sans-serif; font-size:54px; line-height:1;
+    letter-spacing:-.01em; color:#111827; text-transform:uppercase;
+  }
+  .spec-title {
+    font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700;
+    letter-spacing:.22em; text-transform:uppercase; color:#1D4ED8; margin-top:10px;
+  }
+  .fig-box {
+    position:absolute; right:24px; top:50%; transform:translateY(-50%);
+    width:104px; text-align:center;
+  }
+  .fig-box img, .fig-box .fig-initials {
+    width:104px; height:104px; object-fit:cover; display:block;
+    border:2px solid #1D4ED8; background:#fff;
+  }
+  .fig-box .fig-initials {
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:28px; color:#1D4ED8;
+  }
+  .fig-box figcaption {
+    font-family:'JetBrains Mono',monospace; font-size:8px; letter-spacing:.18em;
+    text-transform:uppercase; color:#6b7280; margin-top:5px;
+  }
+
+  /* ---- contact spec rows with dotted leaders ---- */
+  .contact-spec { border:2px solid #111827; border-top:none; padding:14px 24px; background:#fff; }
+  .spec-row {
+    display:flex; align-items:baseline;
+    font-family:'JetBrains Mono',monospace; font-size:12px; padding:3.5px 0;
+  }
+  .spec-row .k { color:#6b7280; font-weight:500; letter-spacing:.08em; white-space:nowrap; }
+  .spec-row .dots {
+    flex:1; border-bottom:2px dotted #9ca3af; margin:0 10px;
+    transform:translateY(-3px); min-width:20px;
+  }
+  .spec-row .v { font-weight:700; color:#111827; text-align:right; word-break:break-all; }
+
+  /* ---- section labels ---- */
+  .sec-label {
+    font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700;
+    letter-spacing:.2em; text-transform:uppercase; color:#1D4ED8;
+    margin:30px 0 0;
+  }
+  .sec-rule { height:2px; background:#1D4ED8; margin:8px 0 16px; }
+  .sec-body { background:rgba(255,255,255,.72); }
+
+  .summary {
+    font-size:13px; line-height:1.8; color:#1f2937;
+  }
+
+  /* ---- numbered experience items ---- */
+  .exp-item { margin-bottom:20px; }
+  .exp-no {
+    display:inline-block; font-family:'JetBrains Mono',monospace; font-size:10.5px;
+    font-weight:700; letter-spacing:.16em; color:#1D4ED8;
+    border:1.5px solid #1D4ED8; padding:2px 9px; margin-bottom:9px; background:#fff;
+  }
+  .exp-role { font-size:16px; font-weight:600; color:#111827; }
+  .exp-meta {
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:#6b7280; margin:5px 0 9px;
+  }
+  .exp-meta .co { color:#1D4ED8; font-weight:700; }
+  .exp-item ul { list-style:none; }
+  .exp-item li {
+    font-size:12.5px; line-height:1.7; color:#374151; padding-left:20px;
+    position:relative; margin-bottom:4px;
+  }
+  .exp-item li::before {
+    content:"▸"; position:absolute; left:2px; color:#1D4ED8; font-weight:700;
+    font-family:'JetBrains Mono',monospace;
+  }
+
+  /* ---- education ---- */
+  .edu { margin-bottom:14px; }
+  .edu .deg { font-size:14.5px; font-weight:600; color:#111827; }
+  .edu .sch {
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:#6b7280; margin-top:3px;
+  }
+  .edu .det { font-size:12.5px; color:#374151; margin-top:4px; line-height:1.65; }
+
+  /* ---- skill rows with level bars ---- */
+  .skill-row {
+    display:flex; align-items:center; gap:14px; padding:5px 0;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .skill-row .sname { width:170px; flex:none; font-size:12px; font-weight:700; color:#111827; }
+  .skill-row .bar { flex:1; height:9px; background:#E5E7EB; border:1px solid #d1d5db; }
+  .skill-row .fill { height:100%; background:#1D4ED8; }
+  .skill-row .pct { width:52px; flex:none; text-align:right; font-size:11.5px; font-weight:500; color:#6b7280; }
+
+  /* ---- projects ---- */
+  .proj { margin-bottom:12px; font-size:12.5px; line-height:1.65; color:#374151; }
+  .proj .pname {
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12.5px; color:#111827;
+  }
+  .proj .pname::after { content:" :: "; color:#1D4ED8; }
+
+  .mono-list {
+    font-family:'JetBrains Mono',monospace; font-size:12px; line-height:2; color:#1f2937;
+  }
+
+  /* ---- signature ---- */
+  .sig-wrap { margin-top:32px; text-align:right; }
+  .sig-label {
+    font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700;
+    letter-spacing:.2em; text-transform:uppercase; color:#1D4ED8; margin-bottom:6px;
+  }
+  .sig-wrap img { max-height:70px; max-width:250px; }
+  .sig-wrap .sig-rule {
+    width:230px; border-top:2px solid #111827; margin:4px 0 0 auto;
+  }
+
+  .footer-strip {
+    margin-top:34px; border:2px solid #111827; background:#111827; color:#fff;
+    font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.18em;
+    text-transform:uppercase; padding:8px 14px;
+    display:flex; justify-content:space-between;
+  }
+</style>
+</head>
+<body>
+<div class="page" id="page"></div>
+<script>
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+
+function initials(name){
+  var p=String(name||"").trim().split(/\s+/).filter(Boolean);
+  return ((p[0]?p[0][0]:"")+(p[1]?p[1][0]:"")).toUpperCase()||"--";
+}
+
+function secHead(label){return '<div class="sec-label">'+esc(label)+':</div><div class="sec-rule"></div>';}
+
+function contactSpec(d){
+  var rows=[["EMAIL",d.email],["PHONE",d.phone],["LOC",d.location],
+            ["WEB",d.website],["IN",d.linkedin]];
+  var html=rows.filter(function(r){return r[1];}).map(function(r){
+    return '<div class="spec-row"><span class="k">'+r[0]+'</span>'+
+      '<span class="dots"></span><span class="v">'+esc(r[1])+'</span></div>';
+  }).join("");
+  return html?'<div class="contact-spec">'+html+'</div>':"";
+}
+
+function figBlock(d){
+  var inner=d.photoDataUrl
+    ? '<img src="'+esc(d.photoDataUrl)+'" alt="Subject">'
+    : '<div class="fig-initials">'+esc(initials(d.name))+'</div>';
+  return '<div class="fig-box">'+inner+'<figcaption>Fig. 1 — Subject</figcaption></div>';
+}
+
+function summarySec(d){
+  if(!d.summary)return "";
+  return secHead("Profile")+'<p class="summary">'+esc(d.summary)+'</p>';
+}
+
+function experienceSec(d){
+  if(!d.experience||!d.experience.length)return "";
+  var items=d.experience.map(function(j,i){
+    var no="EXP-"+("0"+(i+1)).slice(-2);
+    var bullets=(j.bullets||[]).map(function(b){return '<li>'+esc(b)+'</li>';}).join("");
+    var meta=[j.company?'<span class="co">'+esc(j.company)+'</span>':"",
+              j.period?esc(j.period):"", j.location?esc(j.location):""]
+              .filter(Boolean).join(" &nbsp;//&nbsp; ");
+    return '<div class="exp-item"><div class="exp-no">'+no+'</div>'+
+      '<div class="exp-role">'+esc(j.role||"")+'</div>'+
+      (meta?'<div class="exp-meta">'+meta+'</div>':"")+
+      (bullets?'<ul>'+bullets+'</ul>':"")+'</div>';
+  }).join("");
+  return secHead("Experience")+items;
+}
+
+function educationSec(d){
+  if(!d.education||!d.education.length)return "";
+  var items=d.education.map(function(e){
+    var sch=[e.school,e.period].filter(Boolean).map(esc).join(" // ");
+    return '<div class="edu"><div class="deg">'+esc(e.degree||"")+'</div>'+
+      (sch?'<div class="sch">'+sch+'</div>':"")+
+      (e.detail?'<div class="det">'+esc(e.detail)+'</div>':"")+'</div>';
+  }).join("");
+  return secHead("Education")+items;
+}
+
+function skillsSec(d){
+  if(!d.skills||!d.skills.length)return "";
+  var rows=d.skills.map(function(s){
+    var lv=Math.max(0,Math.min(100,parseInt(s.level,10)||0));
+    return '<div class="skill-row"><span class="sname">'+esc(s.name)+'</span>'+
+      '<span class="bar"><span class="fill" style="display:block;width:'+lv+'%"></span></span>'+
+      '<span class="pct">'+lv+'%</span></div>';
+  }).join("");
+  return secHead("Skills")+rows;
+}
+
+function projectsSec(d){
+  if(!d.projects||!d.projects.length)return "";
+  var items=d.projects.map(function(p){
+    return '<div class="proj"><span class="pname">'+esc(p.name)+'</span>'+esc(p.detail||"")+'</div>';
+  }).join("");
+  return secHead("Projects")+items;
+}
+
+function certsSec(d){
+  if(!d.certifications||!d.certifications.length)return "";
+  return secHead("Certifications")+'<p class="mono-list">'+d.certifications.map(esc).join("<br>")+'</p>';
+}
+
+function langsSec(d){
+  if(!d.languages||!d.languages.length)return "";
+  return secHead("Languages")+'<p class="mono-list">'+d.languages.map(esc).join(" &nbsp;//&nbsp; ")+'</p>';
+}
+
+function sigBlock(d){
+  if(!d.signatureDataUrl)return "";
+  return '<div class="sig-wrap"><div class="sig-label">Signature:</div>'+
+    '<img src="'+esc(d.signatureDataUrl)+'" alt="Signature">'+
+    '<div class="sig-rule"></div></div>';
+}
+
+window.renderResume=function(d){
+  d=d||{};
+  if(!d.name)d.name="Your Name";
+  var html=
+    '<div class="title-block"><div class="doc-no">DOC NO RF-001 · REV A · SHEET 1/1</div>'+
+      figBlock(d)+
+      '<h1>'+esc(d.name)+'</h1>'+
+      (d.title?'<div class="spec-title">'+esc(d.title)+'</div>':"")+
+    '</div>'+
+    contactSpec(d)+
+    summarySec(d)+experienceSec(d)+educationSec(d)+skillsSec(d)+
+    projectsSec(d)+certsSec(d)+langsSec(d)+
+    sigBlock(d)+
+    '<div class="footer-strip"><span>ResumeForge Spec Document</span><span>Tolerance: ±0</span></div>';
+  document.getElementById("page").innerHTML=html;
+};
+
+var DEFAULT_DATA={
+  name:"Danish Ali",title:"Senior Backend Engineer",
+  email:"danish.ali@example.com",phone:"+92 300 1234567",location:"Lahore, Pakistan",
+  website:"danishali.dev",linkedin:"linkedin.com/in/danishali",
+  summary:"Backend engineer, 8 yrs. Event-driven architectures, database performance, team leadership. 40M events/day pipelines; 99.99% uptime payments API; infra cost −30%.",
+  experience:[
+    {role:"Senior Backend Engineer",company:"CraftNest Systems",period:"2021 — Present",location:"Lahore",
+     bullets:["Migrated monolith to event-driven microservices; deploy time −70%.","Built ingestion pipeline: 40M events/day, p99 < 200ms."]},
+    {role:"Software Engineer",company:"DataWorks",period:"2018 — 2021",location:"Karachi",
+     bullets:["Shipped payments API: 2M req/day, 99.99% uptime.","Rebuilt reporting on ClickHouse; queries minutes → seconds."]}
+  ],
+  education:[
+    {degree:"BS Computer Science",school:"Virtual University of Pakistan",period:"2014 — 2018",detail:"Distinction; final-year project: distributed key-value store."}
+  ],
+  skills:[{name:"Python",level:95},{name:"Go",level:82},{name:"PostgreSQL",level:90},{name:"Kafka",level:85},{name:"Kubernetes",level:76}],
+  projects:[{name:"LedgerCore",detail:"Open-source double-entry ledger engine; 2.1k stars."}],
+  certifications:["AWS Solutions Architect — Associate","Certified Kubernetes Administrator"],
+  languages:["English — Fluent","Urdu — Native"],
+  photoDataUrl:"",signatureDataUrl:""
+};
+
+document.addEventListener("DOMContentLoaded",function(){window.renderResume(DEFAULT_DATA);});
+</script>
+</body>
+</html>
