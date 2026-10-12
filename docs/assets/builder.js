@@ -107,15 +107,24 @@
   bindUpload("f_sig", "f_sig_prev", "f_sig_clear", "sig");
 
   /* ---- render ---- */
-  let timer = null;
+  let timer = null, bespokeReady = false;
   function render() {
-    if (!current || !window.RF_RENDER) return;
+    if (!current) return;
     try {
-      frame.srcdoc = window.RF_RENDER.renderTemplate(current, collectData());
+      if (current.bespoke) {
+        const w = frame.contentWindow;
+        if (bespokeReady && w && typeof w.renderResume === "function")
+          w.renderResume(collectData());
+      } else if (window.RF_RENDER) {
+        frame.srcdoc = window.RF_RENDER.renderTemplate(current, collectData());
+      }
     } catch (e) { /* keep last good preview on bad input */ }
   }
   function schedule() { clearTimeout(timer); timer = setTimeout(render, 220); }
   form.addEventListener("input", schedule);
+  frame.addEventListener("load", () => {
+    if (current && current.bespoke) { bespokeReady = true; render(); }
+  });
 
   /* ---- sample data ---- */
   function fillForm(d) {
@@ -150,13 +159,25 @@
     catch (e) { alert("Could not open the print dialog for the preview."); }
   });
 
+  /* Fullscreen preview toggle (mobile: form + preview visible together). */
+  $("expandBtn").addEventListener("click", () => {
+    const on = document.body.classList.toggle("preview-full");
+    $("expandBtn").textContent = on ? "Close" : "Expand";
+  });
+
   /* ---- template select ---- */
   function selectTemplate(slug) {
     current = registry.find(t => t.slug === slug) || registry[0];
     if (!current) return;
     tplSel.value = current.slug;
     tplInfo.innerHTML = `<strong>${current.name}</strong> — ${current.persona} · ${(current.tags || []).join(", ")}`;
-    render();
+    bespokeReady = false;
+    if (current.bespoke && current.file) {
+      frame.src = current.file;
+    } else {
+      frame.removeAttribute("src");
+      render();
+    }
   }
   tplSel.addEventListener("change", () => selectTemplate(tplSel.value));
 

@@ -200,8 +200,18 @@ fieldset legend {
 
 @media (max-width: 1020px) {
   .builder-main { grid-template-columns: 1fr; }
-  .preview-panel { position: static; }
-  .preview-frame { height: 90vh; }
+  /* Form + preview on one screen: sticky live preview above the form. */
+  .preview-panel {
+    position: sticky; top: 0; z-index: 30;
+    background: var(--bg); padding: 10px 0 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .preview-frame { height: 36vh; min-height: 260px; }
+  body.preview-full .preview-panel {
+    position: fixed; inset: 0; z-index: 60; padding: 12px;
+    border-bottom: none; overflow: auto;
+  }
+  body.preview-full .preview-frame { height: calc(100vh - 76px); min-height: 0; }
 }
 @media (max-width: 640px) {
   .wrap { padding: 0 16px; }

@@ -10,11 +10,12 @@
 
   let registry = [];
   let activeTag = "";
-  const LAYOUTS = ["banner", "cards", "classic", "compact", "creative", "editorial", "sidebar-left", "sidebar-right", "swiss", "timeline"];
+  const LAYOUTS = ["banner", "cards", "classic", "compact", "creative", "editorial", "sidebar-left", "sidebar-right", "swiss", "timeline", "bespoke"];
   const LAY_LABEL = {
     "banner": "Banner", "cards": "Cards", "classic": "Classic", "compact": "Compact",
     "creative": "Creative", "editorial": "Editorial", "sidebar-left": "Sidebar left",
-    "sidebar-right": "Sidebar right", "swiss": "Swiss", "timeline": "Timeline"
+    "sidebar-right": "Sidebar right", "swiss": "Swiss", "timeline": "Timeline",
+    "bespoke": "Bespoke"
   };
 
   LAYOUTS.forEach(l => {
@@ -60,7 +61,8 @@
     f.setAttribute("loading", "lazy");
     f.setAttribute("scrolling", "no");
     f.setAttribute("title", t.name + " preview");
-    f.srcdoc = previewSrc(t);
+    if (t.bespoke && t.file) f.src = t.file;
+    else f.srcdoc = previewSrc(t);
     art.querySelector(".preview").appendChild(f);
     return art;
   }
