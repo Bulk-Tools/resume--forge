@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KPI Dashboard — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: A4; margin: 0; }
+  html, body { background: #E2E8F0; }
+  body { font-family: 'Inter', sans-serif; color: #0F172A; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 794px; min-height: 1123px; margin: 0 auto; background: #F8FAFC; padding: 40px 44px 44px; position: relative; }
+
+  .card { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; }
+
+  /* ---------- header card ---------- */
+  .hdr { padding: 26px 30px; display: flex; gap: 22px; align-items: center; margin-bottom: 18px; }
+  .avatar { width: 84px; height: 84px; flex: none; border-radius: 14px; background: #059669; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 28px; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hdr-text { flex: 1; }
+  .name { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+  .title { font-size: 15px; font-weight: 700; color: #059669; margin-top: 6px; letter-spacing: 0.02em; }
+  .contact { font-size: 12px; color: #64748B; margin-top: 10px; line-height: 1.8; }
+  .contact span { margin-right: 12px; white-space: nowrap; }
+
+  .summary { padding: 18px 22px; font-size: 13px; line-height: 1.7; color: #334155; margin-bottom: 18px; border-left: 4px solid #059669; }
+
+  /* ---------- KPI row ---------- */
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+  .kpi { padding: 16px 18px; }
+  .kpi-num { font-size: 34px; font-weight: 800; color: #0F172A; letter-spacing: -0.02em; line-height: 1; }
+  .kpi-num em { font-style: normal; color: #059669; }
+  .kpi-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #64748B; margin-top: 8px; }
+  .kpi-delta { font-size: 11px; font-weight: 600; color: #059669; margin-top: 4px; }
+
+  .sec-h { font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #0F172A; margin: 22px 0 12px; display: flex; align-items: center; gap: 10px; }
+  .sec-h::after { content: ""; flex: 1; height: 1px; background: #E2E8F0; }
+  .sec-h .dot { width: 8px; height: 8px; border-radius: 50%; background: #059669; flex: none; }
+
+  /* ---------- experience cards ---------- */
+  .job { padding: 18px 22px 18px 20px; border-left: 5px solid #059669; margin-bottom: 12px; }
+  .job-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .role { font-size: 16px; font-weight: 700; }
+  .period { font-size: 11.5px; font-weight: 600; color: #059669; background: #ECFDF5; border-radius: 6px; padding: 3px 10px; white-space: nowrap; }
+  .co { font-size: 12.5px; color: #64748B; font-weight: 500; margin-top: 3px; }
+  .bullets { list-style: none; margin-top: 10px; }
+  .bullets li { font-size: 12.5px; line-height: 1.65; color: #334155; padding-left: 18px; position: relative; margin-bottom: 4px; }
+  .bullets li::before { content: ""; position: absolute; left: 2px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: #059669; }
+
+  /* ---------- skills dashboard ---------- */
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; padding: 18px 22px; }
+  .skill .s-top { display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 600; margin-bottom: 6px; }
+  .skill .s-top .pct { color: #059669; font-weight: 700; }
+  .bar { height: 8px; border-radius: 4px; background: #F1F5F9; overflow: hidden; }
+  .bar i { display: block; height: 100%; border-radius: 4px; background: linear-gradient(90deg, #059669, #34D399); }
+
+  /* ---------- projects ---------- */
+  .projs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .proj { padding: 16px 18px; }
+  .proj .p-name { font-size: 14px; font-weight: 700; }
+  .proj .p-detail { font-size: 12px; color: #64748B; line-height: 1.6; margin-top: 6px; }
+
+  /* ---------- education rows ---------- */
+  .edu-row { display: flex; justify-content: space-between; gap: 16px; padding: 14px 22px; margin-bottom: 8px; align-items: baseline; }
+  .edu-row .deg { font-size: 14px; font-weight: 700; }
+  .edu-row .sch { font-size: 12px; color: #64748B; margin-top: 3px; }
+  .edu-row .per { font-size: 11.5px; font-weight: 600; color: #059669; white-space: nowrap; }
+  .edu-row .det { font-size: 12px; color: #475569; margin-top: 6px; line-height: 1.6; }
+
+  /* ---------- bottom row: certs + languages ---------- */
+  .bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+  .mini { padding: 16px 20px; }
+  .mini-h { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #64748B; margin-bottom: 10px; }
+  .mini-item { font-size: 12.5px; color: #334155; margin-bottom: 7px; line-height: 1.5; }
+  .mini-item b { color: #059669; }
+  .lang-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+  .lang-pill { font-size: 12px; font-weight: 600; background: #ECFDF5; color: #047857; border-radius: 999px; padding: 5px 13px; }
+
+  .sig { position: absolute; right: 44px; bottom: 36px; text-align: right; }
+  .sig img { max-height: 60px; max-width: 220px; }
+  .foot { margin-top: 26px; font-size: 10.5px; color: #94A3B8; letter-spacing: 0.06em; display: flex; justify-content: space-between; }
+  @media print { html, body { background: #fff; } .page { margin: 0; } }
+</style>
+</head>
+<body>
+<div class="page" id="page"></div>
+<script>
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+function initials(name) {
+  const p = String(name || "").trim().split(/\s+/).filter(Boolean);
+  return ((p[0] ? p[0][0] : "Y") + (p[1] ? p[1][0] : "")).toUpperCase();
+}
+
+const DEFAULT_DATA = {
+  name: "Danish Ali",
+  title: "Senior Backend Engineer",
+  email: "danish.ali@example.com",
+  phone: "+92 300 1234567",
+  location: "Lahore, Pakistan",
+  website: "danishali.dev",
+  linkedin: "linkedin.com/in/danishali",
+  summary: "Backend engineer with 8 years building distributed systems that move money and data at scale. I design for failure, measure everything, and ship boring technology that works.",
+  experience: [
+    { role: "Senior Backend Engineer", company: "LedgerCore", period: "2021 — Present", location: "Lahore",
+      bullets: ["Led migration of the payments pipeline to an event-driven architecture, cutting p99 latency from 900ms to 120ms", "Built idempotency and reconciliation layers processing 2M+ transactions daily with zero data loss"] },
+    { role: "Backend Engineer", company: "DataBridge", period: "2018 — 2021", location: "Karachi",
+      bullets: ["Designed multi-tenant Postgres schemas serving 400+ enterprise clients", "Cut infrastructure cost 38% by moving batch workloads to spot instances"] },
+    { role: "Software Engineer", company: "PixelForge", period: "2016 — 2018", location: "Remote",
+      bullets: ["Shipped REST APIs used by 1M+ monthly active users", "Introduced CI pipelines that reduced deploy time from hours to 9 minutes"] }
+  ],
+  education: [
+    { degree: "BS Computer Science", school: "Virtual University of Pakistan", period: "2012 — 2016", detail: "Graduated with distinction; final-year project on distributed key-value stores" }
+  ],
+  skills: [
+    { name: "Python", level: 95 }, { name: "Go", level: 80 }, { name: "PostgreSQL", level: 90 },
+    { name: "Kubernetes", level: 75 }, { name: "Redis", level: 85 }, { name: "AWS", level: 80 }
+  ],
+  projects: [
+    { name: "PulseMQ", detail: "High-throughput message queue in Go, 120k msg/s on a single node" },
+    { name: "SchemaGuard", detail: "Postgres migration linter adopted by 3 engineering teams" }
+  ],
+  certifications: ["AWS Solutions Architect", "Certified Kubernetes Administrator"],
+  languages: ["English", "Urdu"],
+  photoDataUrl: "", signatureDataUrl: ""
+};
+
+function secH(label) {
+  return '<div class="sec-h"><span class="dot"></span>' + esc(label) + "</div>";
+}
+
+function renderResume(d) {
+  d = d || {};
+  const name = (d.name || "").trim() || "Your Name";
+  const page = document.getElementById("page");
+
+  const jobs = (d.experience || []).filter(j => j && (j.role || j.company));
+  const projs = (d.projects || []).filter(p => p && p.name);
+  const skills = (d.skills || []).filter(s => s && s.name);
+  const edu = (d.education || []).filter(e => e && (e.degree || e.school));
+  const certs = (d.certifications || []).filter(Boolean);
+  const langs = (d.languages || []).filter(Boolean);
+
+  const contactBits = [d.email, d.phone, d.location, d.website, d.linkedin]
+    .filter(Boolean).map(x => "<span>" + esc(x) + "</span>").join("");
+  const avatar = d.photoDataUrl
+    ? '<div class="avatar"><img src="' + esc(d.photoDataUrl) + '" alt="Photo"></div>'
+    : '<div class="avatar">' + esc(initials(name)) + "</div>";
+
+  /* ---------- header card ---------- */
+  let h = '<div class="card hdr">' + avatar + '<div class="hdr-text">'
+    + '<div class="name">' + esc(name) + "</div>"
+    + (d.title ? '<div class="title">' + esc(d.title) + "</div>" : "")
+    + (contactBits ? '<div class="contact">' + contactBits + "</div>" : "")
+    + "</div></div>";
+
+  if (d.summary) h += '<div class="card summary">' + esc(d.summary) + "</div>";
+
+  /* ---------- KPI row: honest counts, always rendered ---------- */
+  function kpi(num, label) {
+    return '<div class="card kpi"><div class="kpi-num"><em>' + num + "</em></div>"
+      + '<div class="kpi-label">' + label + "</div>"
+      + '<div class="kpi-delta">\u25B2 lifetime</div></div>';
+  }
+  h += '<div class="kpis">'
+    + kpi(jobs.length, "Roles")
+    + kpi(projs.length, "Projects")
+    + kpi(skills.length, "Skills")
+    + kpi(certs.length, "Certifications")
+    + "</div>";
+
+  /* ---------- experience ---------- */
+  if (jobs.length) {
+    h += secH("Experience");
+    jobs.forEach(j => {
+      h += '<div class="card job"><div class="job-top"><div class="role">' + esc(j.role || "") + "</div>"
+        + (j.period ? '<div class="period">' + esc(j.period) + "</div>" : "") + "</div>"
+        + '<div class="co">' + esc([j.company, j.location].filter(Boolean).join(" \u00B7 ")) + "</div>";
+      const bl = (j.bullets || []).filter(Boolean);
+      if (bl.length) h += '<ul class="bullets">' + bl.map(b => "<li>" + esc(b) + "</li>").join("") + "</ul>";
+      h += "</div>";
+    });
+  }
+
+  /* ---------- skills bars ---------- */
+  if (skills.length) {
+    h += secH("Skills");
+    h += '<div class="card"><div class="skills-grid">' + skills.map(s => {
+      const lvl = Math.max(0, Math.min(100, parseInt(s.level, 10) || 0));
+      return '<div class="skill"><div class="s-top"><span>' + esc(s.name) + '</span><span class="pct">' + lvl + "%</span></div>"
+        + '<div class="bar"><i style="width:' + lvl + '%"></i></div></div>';
+    }).join("") + "</div></div>";
+  }
+
+  /* ---------- projects ---------- */
+  if (projs.length) {
+    h += secH("Projects");
+    h += '<div class="projs">' + projs.map(p =>
+      '<div class="card proj"><div class="p-name">' + esc(p.name) + "</div>"
+      + (p.detail ? '<div class="p-detail">' + esc(p.detail) + "</div>" : "") + "</div>"
+    ).join("") + "</div>";
+  }
+
+  /* ---------- education ---------- */
+  if (edu.length) {
+    h += secH("Education");
+    edu.forEach(e => {
+      h += '<div class="card edu-row"><div><div class="deg">' + esc(e.degree || "") + "</div>"
+        + (e.school ? '<div class="sch">' + esc(e.school) + "</div>" : "")
+        + (e.detail ? '<div class="det">' + esc(e.detail) + "</div>" : "") + "</div>"
+        + (e.period ? '<div class="per">' + esc(e.period) + "</div>" : "") + "</div>";
+    });
+  }
+
+  /* ---------- certs + languages ---------- */
+  if (certs.length || langs.length) {
+    h += secH("Credentials");
+    h += '<div class="bottom">';
+    if (certs.length) h += '<div class="card mini"><div class="mini-h">Certifications</div>'
+      + certs.map(c => '<div class="mini-item"><b>\u2713</b> ' + esc(c) + "</div>").join("") + "</div>";
+    if (langs.length) h += '<div class="card mini"><div class="mini-h">Languages</div><div class="lang-pills">'
+      + langs.map(l => '<span class="lang-pill">' + esc(l) + "</span>").join("") + "</div></div>";
+    h += "</div>";
+  }
+
+  if (d.signatureDataUrl) {
+    h += '<div class="sig"><img src="' + esc(d.signatureDataUrl) + '" alt="Signature"></div>';
+  }
+
+  h += '<div class="foot"><span>CAREER ANALYTICS \u00B7 LIVE</span><span>UPDATED ' + esc(new Date().getFullYear()) + "</span></div>";
+  page.innerHTML = h;
+}
+window.renderResume = renderResume;
+
+document.addEventListener("DOMContentLoaded", function () { renderResume(DEFAULT_DATA); });
+</script>
+</body>
+</html>

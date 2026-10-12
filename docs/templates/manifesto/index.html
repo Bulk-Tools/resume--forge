@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifesto — ResumeForge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: A4; margin: 0; }
+  html, body { background: #FAFAF9; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #0C0A09;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    margin: 0 auto;
+    background: #FAFAF9;
+    color: #0C0A09;
+    padding: 64px 68px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ——— name block: the poster statement ——— */
+  .name-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    margin-bottom: 12px;
+  }
+  .name-words { flex: 1; min-width: 0; }
+  .kicker {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: #EA580C;
+    margin-bottom: 14px;
+  }
+  h1.name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(64px, 11vw, 118px);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    word-break: break-word;
+  }
+  .name .accent-word { color: #EA580C; }
+  .role-line {
+    margin-top: 16px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #0C0A09;
+  }
+  .role-line .dot { color: #EA580C; }
+  .photo-box {
+    width: 120px;
+    height: 120px;
+    flex: none;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 3px solid #0C0A09;
+    box-shadow: 8px 8px 0 #EA580C;
+  }
+  .photo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-initials {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: #0C0A09; color: #FAFAF9;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 40px; letter-spacing: 0.02em;
+  }
+  .title-rule {
+    height: 6px;
+    background: #0C0A09;
+    margin: 30px 0 6px;
+    position: relative;
+  }
+  .title-rule::after {
+    content: "";
+    position: absolute; right: 0; top: 0;
+    width: 28%; height: 100%;
+    background: #EA580C;
+  }
+
+  /* ——— sections: giant faint numbers + small-caps labels ——— */
+  section { margin-top: 38px; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  .sec-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 72px;
+    line-height: 1;
+    color: #0C0A09;
+    opacity: 0.09;
+    flex: none;
+  }
+  .sec-label {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #EA580C;
+  }
+
+  /* ——— summary: the wide statement ——— */
+  .summary-text {
+    font-size: 20px;
+    line-height: 1.65;
+    font-weight: 500;
+    max-width: 100%;
+  }
+  .summary-text .hl { color: #EA580C; font-weight: 700; }
+
+  /* ——— experience: numbered manifesto list ——— */
+  .job {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 18px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(12,10,9,0.14);
+  }
+  .job:last-child { border-bottom: none; }
+  .job-idx {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 40px;
+    line-height: 1;
+    color: #EA580C;
+  }
+  .job-role {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .job-meta {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(12,10,9,0.55);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 6px 0 10px;
+  }
+  .job-meta .sep { color: #EA580C; margin: 0 6px; }
+  .job ul { list-style: none; }
+  .job li {
+    font-size: 14.5px;
+    line-height: 1.6;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 6px;
+    color: rgba(12,10,9,0.88);
+  }
+  .job li::before {
+    content: "▸";
+    position: absolute; left: 0;
+    color: #EA580C;
+    font-weight: 800;
+  }
+
+  /* ——— skills: one large statement ——— */
+  .skills-statement {
+    font-size: 21px;
+    line-height: 1.8;
+    font-weight: 600;
+  }
+  .skills-statement .sk { white-space: nowrap; }
+  .skills-statement .comma { color: #EA580C; font-weight: 800; }
+  .skills-statement .lvl {
+    font-size: 12px;
+    font-weight: 800;
+    color: #EA580C;
+    vertical-align: super;
+    letter-spacing: 0.04em;
+  }
+
+  /* ——— education / projects / misc: compact manifesto rows ——— */
+  .edu-row, .proj-row, .misc-row {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(12,10,9,0.14);
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .edu-row:last-child, .proj-row:last-child, .misc-row:last-child { border-bottom: none; }
+  .edu-degree, .proj-name { font-weight: 800; font-size: 16px; }
+  .edu-meta, .proj-detail { color: rgba(12,10,9,0.6); }
+  .edu-period {
+    float: right;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #EA580C;
+    text-transform: uppercase;
+    padding-top: 3px;
+  }
+
+  /* ——— footer contact strip ——— */
+  .foot-rule { height: 6px; background: #0C0A09; margin-top: 44px; }
+  footer.contact {
+    margin-top: auto;
+    padding: 22px 0 34px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 34px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  footer.contact .c-item { display: flex; align-items: center; gap: 8px; }
+  footer.contact .c-dot {
+    width: 8px; height: 8px;
+    background: #EA580C;
+    flex: none;
+  }
+
+  .sig-block { text-align: right; margin-top: 18px; }
+  .sig-block img { max-height: 64px; max-width: 230px; }
+
+  @media print {
+    html, body { background: #FAFAF9; }
+    .page { margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page" id="page"></div>
+<script>
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+function initials(name) {
+  const parts = String(name || "").trim().split(/\s+/).filter(Boolean);
+  return (parts.slice(0, 2).map(p => p[0]).join("") || "•").toUpperCase();
+}
+
+var DEFAULT_DATA = {
+  "name": "Danish Ali",
+  "title": "Senior Backend Engineer",
+  "email": "danish.ali@example.com",
+  "phone": "+92 300 123 4567",
+  "location": "Lahore, Pakistan",
+  "website": "danishali.dev",
+  "linkedin": "linkedin.com/in/danishali",
+  "summary": "Backend engineer with 7 years building distributed systems that serve 40M+ requests a day. Deep in Python, Go and PostgreSQL; led a team of 5 through a zero-downtime migration to Kubernetes. I care about boring reliability and APIs developers love to use.",
+  "experience": [
+    {"role": "Senior Backend Engineer", "company": "NexaPay", "period": "2022 — Present", "location": "Lahore",
+     "bullets": ["Rebuilt payment ledger on event-driven architecture; cut p99 latency from 900ms to 140ms",
+                 "Led migration of 38 services to Kubernetes with zero customer-facing downtime",
+                 "Mentor a squad of 5 engineers; introduced design-doc culture adopted org-wide"]},
+    {"role": "Backend Engineer", "company": "CloudKite", "period": "2019 — 2022", "location": "Remote",
+     "bullets": ["Built multi-tenant SaaS API in Django serving 12,000 business customers",
+                 "Designed PostgreSQL sharding scheme that held 2B rows under 200ms queries",
+                 "Shipped CI pipeline cutting deploy time from 45 minutes to 6"]},
+    {"role": "Software Engineer", "company": "Softline Systems", "period": "2017 — 2019", "location": "Karachi",
+     "bullets": ["Maintained ERP modules used by 300+ retail stores across Pakistan",
+                 "Wrote internal tooling that saved the support team ~15 hours a week"]}
+  ],
+  "education": [
+    {"degree": "BS Computer Science", "school": "Virtual University of Pakistan", "period": "2013 — 2017",
+     "detail": "Graduated with distinction; final-year project on distributed key-value stores"}
+  ],
+  "skills": [
+    {"name": "Python / Django", "level": 95}, {"name": "Go", "level": 85},
+    {"name": "PostgreSQL", "level": 90}, {"name": "Kubernetes", "level": 88},
+    {"name": "Redis / Kafka", "level": 82}, {"name": "AWS", "level": 80},
+    {"name": "System Design", "level": 92}, {"name": "gRPC / REST", "level": 90}
+  ],
+  "projects": [
+    {"name": "LedgerCore", "detail": "Open-source double-entry ledger engine; 2.1k GitHub stars"},
+    {"name": "pg-squeezer", "detail": "PostgreSQL bloat monitor with Slack alerts"}
+  ],
+  "certifications": ["AWS Certified Solutions Architect — Associate (2023)", "CKA: Certified Kubernetes Administrator (2022)"],
+  "languages": ["English — Fluent", "Urdu — Native"],
+  "photoDataUrl": "", "signatureDataUrl": ""
+};
+
+function secHead(num, label) {
+  return '<div class="sec-head"><div class="sec-num">' + num +
+    '</div><div class="sec-label">' + esc(label) + '</div></div>';
+}
+
+function renderResume(data) {
+  var d = data || {};
+  var name = (d.name || "").trim() || "Your Name";
+  var words = name.split(/\s+/).filter(Boolean);
+  // accent the final word of the name for the poster punch
+  var nameHtml = words.map(function (w, i) {
+    var cls = i === words.length - 1 ? ' class="accent-word"' : '';
+    return '<span' + cls + '>' + esc(w) + '</span>';
+  }).join(" ");
+
+  var photoHtml = d.photoDataUrl
+    ? '<div class="photo-box"><img src="' + esc(d.photoDataUrl) + '" alt="Photo"></div>'
+    : '<div class="photo-box"><div class="photo-initials">' + esc(initials(name)) + '</div></div>';
+
+  var html = ''
+    + '<div class="name-row"><div class="name-words">'
+    + '<div class="kicker">Résumé</div>'
+    + '<h1 class="name">' + nameHtml + '</h1>'
+    + (d.title ? '<div class="role-line">' + esc(d.title) + '</div>' : '')
+    + '</div>' + photoHtml + '</div>'
+    + '<div class="title-rule"></div>';
+
+  var secNum = 0;
+  function nextNum() { secNum++; return secNum < 10 ? "0" + secNum : String(secNum); }
+
+  // 01 — summary statement
+  if ((d.summary || "").trim()) {
+    html += '<section>' + secHead(nextNum(), "Statement")
+      + '<p class="summary-text">' + esc(d.summary).replace(/(\d[\d.,+]*%?)/g, '<span class="hl">$1</span>') + '</p></section>';
+  }
+
+  // 02 — experience as numbered list
+  var exp = (d.experience || []).filter(function (j) { return j && (j.role || j.company); });
+  if (exp.length) {
+    html += '<section>' + secHead(nextNum(), "Experience");
+    exp.forEach(function (j, i) {
+      var idx = i + 1 < 10 ? "0" + (i + 1) : String(i + 1);
+      var meta = [j.company, j.period, j.location].filter(Boolean).map(esc).join('<span class="sep">/</span>');
+      var bullets = (j.bullets || []).filter(Boolean)
+        .map(function (b) { return '<li>' + esc(b) + '</li>'; }).join("");
+      html += '<div class="job"><div class="job-idx">' + idx + '</div><div>'
+        + '<div class="job-role">' + esc(j.role || j.company || "") + '</div>'
+        + (meta ? '<div class="job-meta">' + meta + '</div>' : '')
+        + (bullets ? '<ul>' + bullets + '</ul>' : '')
+        + '</div></div>';
+    });
+    html += '</section>';
+  }
+
+  // 03 — skills as one large statement
+  var skills = (d.skills || []).filter(function (s) { return s && s.name; });
+  if (skills.length) {
+    var stmt = skills.map(function (s) {
+      var lvl = (s.level != null && s.level !== "") ? '<span class="lvl">' + esc(String(s.level)) + '</span>' : '';
+      return '<span class="sk">' + esc(s.name) + lvl + '</span><span class="comma">,</span>';
+    }).join(" ").replace(/<span class="comma">,<\/span>$/, '<span class="comma">.</span>');
+    html += '<section>' + secHead(nextNum(), "Arsenal")
+      + '<p class="skills-statement">' + stmt + '</p></section>';
+  }
+
+  // 04 — education, compact
+  var edu = (d.education || []).filter(function (e) { return e && (e.degree || e.school); });
+  if (edu.length) {
+    html += '<section>' + secHead(nextNum(), "Education");
+    edu.forEach(function (e) {
+      html += '<div class="edu-row">'
+        + (e.period ? '<span class="edu-period">' + esc(e.period) + '</span>' : '')
+        + '<div class="edu-degree">' + esc(e.degree || e.school || "") + '</div>'
+        + '<div class="edu-meta">' + [e.school, e.detail].filter(Boolean).map(esc).join(" — ") + '</div>'
+        + '</div>';
+    });
+    html += '</section>';
+  }
+
+  // 05 — projects
+  var projs = (d.projects || []).filter(function (p) { return p && (p.name || p.detail); });
+  if (projs.length) {
+    html += '<section>' + secHead(nextNum(), "Selected Work");
+    projs.forEach(function (p) {
+      html += '<div class="proj-row"><span class="proj-name">' + esc(p.name || "") + '</span>'
+        + (p.detail ? ' <span class="proj-detail">— ' + esc(p.detail) + '</span>' : '')
+        + '</div>';
+    });
+    html += '</section>';
+  }
+
+  // 06 — certifications & languages, compact rows
+  var misc = [];
+  (d.certifications || []).filter(Boolean).forEach(function (c) { misc.push(esc(c)); });
+  (d.languages || []).filter(Boolean).forEach(function (l) { misc.push(esc(l)); });
+  if (misc.length) {
+    html += '<section>' + secHead(nextNum(), "Credentials")
+      + misc.map(function (m) { return '<div class="misc-row">' + m + '</div>'; }).join("")
+      + '</section>';
+  }
+
+  // signature, bottom-right above the footer
+  if (d.signatureDataUrl) {
+    html += '<div class="sig-block"><img src="' + esc(d.signatureDataUrl) + '" alt="Signature"></div>';
+  }
+
+  // footer contact strip
+  var contacts = [d.email, d.phone, d.location, d.website, d.linkedin].filter(Boolean);
+  html += '<div class="foot-rule"></div>'
+    + '<footer class="contact">'
+    + contacts.map(function (c) { return '<span class="c-item"><span class="c-dot"></span>' + esc(c) + '</span>'; }).join("")
+    + '</footer>';
+
+  document.getElementById("page").innerHTML = html;
+}
+window.renderResume = renderResume;
+
+document.addEventListener("DOMContentLoaded", function () {
+  renderResume(DEFAULT_DATA);
+});
+</script>
+</body>
+</html>
