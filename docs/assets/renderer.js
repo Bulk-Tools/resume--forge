@@ -52,7 +52,7 @@ body{background:#dfe3e8;display:flex;justify-content:center;padding:28px 12px;fo
 .page{width:794px;min-height:1123px;background:${P.bg};color:${P.ink};position:relative;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.18);font-size:${fs};line-height:${lh}}
 @media print{body{padding:0;background:#fff;display:block}.page{box-shadow:none;margin:0}}
 @page{size:A4;margin:0}
-.pad{padding:${pad}}
+.sig-block{text-align:right;margin-top:22px}.sig-block img{max-height:64px;max-width:230px}.photo img{width:100%;height:100%;object-fit:cover;display:block}.pad{padding:${pad}}
 .sec{margin-bottom:${gap}}
 p{margin:0}
 `;
@@ -141,9 +141,18 @@ function rfSkillsCss(P) {
 
 function rfPhotoHtml(cfg, d, P) {
   const ph = cfg.header.photo;
+  if (d.photoDataUrl) {
+    const rad = ph === "circle" ? "50%" : ph === "rounded" ? "18%" : ph === "square" ? "6px" : "50%";
+    return `<div class="photo" style="border-radius:${rad};overflow:hidden"><img src="${rfEsc(d.photoDataUrl)}" alt="Photo"></div>`;
+  }
   if (ph === "none") return "";
   const rad = ph === "circle" ? "50%" : ph === "rounded" ? "18%" : "6px";
   return `<div class="photo" style="border-radius:${rad};background:${P.accent};color:#fff">${rfEsc(rfInitials(d.name))}</div>`;
+}
+
+function rfSigHtml(d) {
+  if (!d.signatureDataUrl) return "";
+  return `<div class="sig-block"><img src="${rfEsc(d.signatureDataUrl)}" alt="Signature"></div>`;
 }
 
 function rfContactRow(d, color) {
@@ -303,7 +312,7 @@ function rfPageShapeHtml(cfg, P) {
 
 function rfLayoutClassic(cfg, d, P) {
   const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
-  return `<div class="page">${rfPageShapeHtml(cfg, P)}<div class="pad">${rfHeaderHtml(cfg, d, P)}${secs}</div></div>`;
+  return `<div class="page">${rfPageShapeHtml(cfg, P)}<div class="pad">${rfHeaderHtml(cfg, d, P)}${secs}${rfSigHtml(d)}</div></div>`;
 }
 
 function rfLayoutSidebar(cfg, d, P, side) {
@@ -325,7 +334,7 @@ function rfLayoutSidebar(cfg, d, P, side) {
     `</aside>`;
   const head = `<div class="sb-head"><div class="sb-name" style="font-family:'${df}',serif">${rfEsc(d.name)}</div>` +
     `<div class="sb-title" style="color:${P.accent}">${rfEsc(d.title)}</div></div>`;
-  const main = `<main class="sb-main"><div class="pad">${head}${mainSecs}</div></main>`;
+  const main = `<main class="sb-main"><div class="pad">${head}${mainSecs}${rfSigHtml(d)}</div></main>`;
   const inner = side === "left" ? aside + main : main + aside;
   return `<div class="page"><div class="sb-wrap">${inner}</div></div>`;
 }
@@ -353,7 +362,7 @@ function rfLayoutBanner(cfg, d, P) {
     `<div class="bnr-name" style="font-family:'${df}',serif">${rfEsc(d.name)}</div>` +
     `<div class="bnr-title">${rfEsc(d.title)}</div>${rfContactRow(d, "#fff")}</div></div>`;
   const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
-  return `<div class="page">${banner}<div class="pad">${secs}</div></div>`;
+  return `<div class="page">${banner}<div class="pad">${secs}${rfSigHtml(d)}</div></div>`;
 }
 
 function rfBannerCss() {
@@ -369,7 +378,7 @@ function rfBannerCss() {
 function rfLayoutTimeline(cfg, d, P) {
   const cfg2 = Object.assign({}, cfg, { experience: { style: "timeline" } });
   const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg2, k, d, P, i)).join("");
-  return `<div class="page">${rfPageShapeHtml(cfg, P)}<div class="pad">${rfHeaderHtml(cfg, d, P)}${secs}</div></div>`;
+  return `<div class="page">${rfPageShapeHtml(cfg, P)}<div class="pad">${rfHeaderHtml(cfg, d, P)}${secs}${rfSigHtml(d)}</div></div>`;
 }
 
 function rfLayoutEditorial(cfg, d, P) {
@@ -378,7 +387,7 @@ function rfLayoutEditorial(cfg, d, P) {
     `<div class="ed-title" style="color:${P.accent}">${rfEsc(d.title)} &nbsp;·&nbsp; ${rfEsc(d.location)}</div>` +
     `<div class="ed-rule" style="background:${P.accent}"></div>${rfContactRow(d)}</header>`;
   const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
-  return `<div class="page"><div class="pad ed">${head}${secs}</div></div>`;
+  return `<div class="page"><div class="pad ed">${head}${secs}${rfSigHtml(d)}</div></div>`;
 }
 
 function rfEditorialCss() {
@@ -395,15 +404,18 @@ function rfEditorialCss() {
 function rfLayoutCards(cfg, d, P) {
   const cfg2 = Object.assign({}, cfg, { experience: { style: "card" } });
   const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg2, k, d, P, i)).join("");
-  return `<div class="page">${rfPageShapeHtml(cfg, P)}<div class="pad">${rfHeaderHtml(cfg, d, P)}${secs}</div></div>`;
+  return `<div class="page">${rfPageShapeHtml(cfg, P)}<div class="pad">${rfHeaderHtml(cfg, d, P)}${secs}${rfSigHtml(d)}</div></div>`;
 }
 
 function rfLayoutSwiss(cfg, d, P) {
   const cells = [["Name", d.name], ["Title", d.title], ["Mail", d.email], ["Phone", d.phone], ["Place", d.location], ["Web", d.website]];
   const grid = cells.map(([k, v]) => `<div class="sw-cell"><div class="sw-k">${k}</div><div class="sw-v">${rfEsc(v)}</div></div>`).join("");
   const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
-  return `<div class="page"><div class="pad"><div class="sw-grid" style="border-color:${P.rule}">${grid}</div>` +
-    `<div class="sw-rule" style="background:${P.ink}"></div>${secs}</div></div>`;
+  const photo = rfPhotoHtml(cfg, d, P);
+  const gridHtml = `<div class="sw-grid" style="border-color:${P.rule}">${grid}</div>`;
+  const top = photo ? `<div class="sw-top">${photo}${gridHtml}</div>` : gridHtml;
+  return `<div class="page"><div class="pad">${top}` +
+    `<div class="sw-rule" style="background:${P.ink}"></div>${secs}${rfSigHtml(d)}</div></div>`;
 }
 
 function rfSwissCss(P) {
@@ -414,6 +426,9 @@ function rfSwissCss(P) {
 .sw-k{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:${P.muted};font-weight:700}
 .sw-v{font-size:13px;font-weight:600;margin-top:2px}
 .sw-rule{height:3px;margin:14px 0 22px}
+.sw-top{display:flex;gap:18px;align-items:center;margin-bottom:6px}
+.sw-top .sw-grid{flex:1;margin-bottom:0}
+.sw-top .photo{width:88px;height:88px;flex:none}
 `;
 }
 
@@ -423,7 +438,7 @@ function rfLayoutCreative(cfg, d, P) {
     `<div class="cr-kicker" style="color:${P.accent}">Résumé — ${rfEsc(d.title)}</div>` +
     `<div class="cr-name" style="font-family:'${df}',serif">${rfEsc(d.name)}</div></div>${photo}</header>`;
   const secs = cfg.sections.order.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
-  return `<div class="page"><div class="pad">${head}${secs}</div></div>`;
+  return `<div class="page"><div class="pad">${head}${secs}${rfSigHtml(d)}</div></div>`;
 }
 
 function rfCreativeCss() {
@@ -438,14 +453,16 @@ function rfCreativeCss() {
 
 function rfLayoutCompact(cfg, d, P) {
   const df = cfg.fonts.display;
-  const head = `<header class="cp-head"><div><div class="cp-name" style="font-family:'${df}',serif">${rfEsc(d.name)}</div>` +
+  const photo = rfPhotoHtml(cfg, d, P);
+  const headCls = photo ? "cp-head cp-head-photo" : "cp-head";
+  const head = `<header class="${headCls}">${photo}<div><div class="cp-name" style="font-family:'${df}',serif">${rfEsc(d.name)}</div>` +
     `<div class="cp-title" style="color:${P.accent}">${rfEsc(d.title)}</div></div>` +
     `<div class="cp-contact">${rfEsc(d.email)} · ${rfEsc(d.phone)}<br>${rfEsc(d.location)} · ${rfEsc(d.website)}</div></header>`;
   const mainKeys = cfg.sections.order.filter(k => ["summary", "experience", "projects"].includes(k));
   const sideKeys = cfg.sections.order.filter(k => ["skills", "education", "certifications", "languages"].includes(k));
   const main = mainKeys.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
   const side = sideKeys.map((k, i) => rfSectionBlock(cfg, k, d, P, i)).join("");
-  return `<div class="page"><div class="pad"><div class="cp-wrap"><div class="cp-main">${head}${main}</div>` +
+  return `<div class="page"><div class="pad"><div class="cp-wrap"><div class="cp-main">${head}${main}${rfSigHtml(d)}</div>` +
     `<div class="cp-side" style="border-color:${P.rule}">${side}</div></div></div></div>`;
 }
 
@@ -454,6 +471,8 @@ function rfCompactCss(P) {
 .cp-wrap{display:grid;grid-template-columns:1.9fr 1fr;gap:26px}
 .cp-side{border-left:1px solid;padding-left:20px}
 .cp-head{margin-bottom:16px}
+.cp-head-photo{display:flex;gap:16px;align-items:center}
+.cp-head-photo .photo{width:72px;height:72px;flex:none}
 .cp-name{font-size:26px;font-weight:800}
 .cp-title{font-size:13px;font-weight:700;letter-spacing:.06em;margin-top:2px}
 .cp-contact{font-size:10.5px;color:${P.muted};margin-top:8px;line-height:1.7}

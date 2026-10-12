@@ -42,6 +42,22 @@
         <div class="field"><label for="f_location">Location</label><input id="f_location" data-k="location"></div>
         <div class="field"><label for="f_website">Website</label><input id="f_website" data-k="website"></div>
         <div class="field"><label for="f_linkedin">LinkedIn</label><input id="f_linkedin" data-k="linkedin"></div>
+        <div class="field upload-row">
+          <div>
+            <label for="f_photo">Your photo</label>
+            <input id="f_photo" type="file" accept="image/*">
+          </div>
+          <img id="f_photo_prev" class="upload-prev" alt="" hidden>
+          <button type="button" id="f_photo_clear" class="mini-btn" hidden>Remove</button>
+        </div>
+        <div class="field upload-row">
+          <div>
+            <label for="f_sig">Signature image</label>
+            <input id="f_sig" type="file" accept="image/*">
+          </div>
+          <img id="f_sig_prev" class="upload-prev" alt="" hidden>
+          <button type="button" id="f_sig_clear" class="mini-btn" hidden>Remove</button>
+        </div>
       </fieldset>
 
       <fieldset>

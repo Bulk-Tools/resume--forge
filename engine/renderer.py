@@ -153,12 +153,28 @@ def skills_css(cfg, P):
 # ---------------------------------------------------------------- header
 def photo_html(cfg, d, P):
     ph = cfg["header"]["photo"]
+    durl = d.get("photoDataUrl")
+    if durl:
+        rad = {"circle": "50%", "rounded": "18%", "square": "6px"}.get(ph, "50%")
+        return (f'<div class="photo" style="border-radius:{rad};overflow:hidden">'
+                f'<img src="{esc(durl)}" alt="Photo"></div>')
     if ph == "none":
         return ""
     rad = {"circle": "50%", "rounded": "18%", "square": "6px"}[ph]
     ini = initials(d["name"])
     return (f'<div class="photo" style="border-radius:{rad};background:{P["accent"]};color:#fff">'
             f'{esc(ini)}</div>')
+
+def sig_html(d):
+    durl = d.get("signatureDataUrl")
+    if not durl:
+        return ""
+    return f'<div class="sig-block"><img src="{esc(durl)}" alt="Signature"></div>'
+
+def sig_css():
+    return (".sig-block{text-align:right;margin-top:22px}"
+            ".sig-block img{max-height:64px;max-width:230px}"
+            ".photo img{width:100%;height:100%;object-fit:cover;display:block}")
 
 def contact_row(d, color=None):
     items = [
@@ -339,7 +355,7 @@ def layout_classic(cfg, d, P):
     secs = "".join(section_block(cfg, k, d, P, i)
                    for i, k in enumerate(cfg["sections"]["order"]))
     return (f'<div class="page">{page_shape_html(cfg, P)}<div class="pad">'
-            f'{header_html(cfg, d, P)}{secs}</div></div>')
+            f'{header_html(cfg, d, P)}{secs}{sig_html(d)}</div></div>')
 
 def layout_sidebar(cfg, d, P, side):
     S = cfg["sidebar"]
@@ -367,7 +383,7 @@ def layout_sidebar(cfg, d, P, side):
         f'</aside>')
     head = (f'<div class="sb-head"><div class="sb-name" style="font-family:\'{df}\',serif">{esc(d["name"])}</div>'
             f'<div class="sb-title" style="color:{P["accent"]}">{esc(d["title"])}</div></div>')
-    main = f'<main class="sb-main"><div class="pad">{head}{main_secs}</div></main>'
+    main = f'<main class="sb-main"><div class="pad">{head}{main_secs}{sig_html(d)}</div></main>'
     inner = aside + main if side == "left" else main + aside
     return f'<div class="page"><div class="sb-wrap">{inner}</div></div>'
 
@@ -396,7 +412,7 @@ def layout_banner(cfg, d, P):
         f'<div class="bnr-title">{esc(d["title"])}</div>{contact_row(d, color="#fff")}</div></div>')
     secs = "".join(section_block(cfg, k, d, P, i)
                    for i, k in enumerate(cfg["sections"]["order"]))
-    return (f'<div class="page">{banner}<div class="pad">{secs}</div></div>')
+    return (f'<div class="page">{banner}<div class="pad">{secs}{sig_html(d)}</div></div>')
 
 def banner_css():
     return """
@@ -412,7 +428,7 @@ def layout_timeline(cfg, d, P):
     secs = "".join(section_block(cfg2, k, d, P, i)
                    for i, k in enumerate(cfg["sections"]["order"]))
     return (f'<div class="page">{page_shape_html(cfg, P)}<div class="pad">'
-            f'{header_html(cfg, d, P)}{secs}</div></div>')
+            f'{header_html(cfg, d, P)}{secs}{sig_html(d)}</div></div>')
 
 def layout_editorial(cfg, d, P):
     df = cfg["fonts"]["display"]
@@ -424,7 +440,7 @@ def layout_editorial(cfg, d, P):
             f'{contact_row(d)}</header>')
     secs = "".join(section_block(cfg, k, d, P, i)
                    for i, k in enumerate(cfg["sections"]["order"]))
-    return f'<div class="page"><div class="pad ed">{head}{secs}</div></div>'
+    return f'<div class="page"><div class="pad ed">{head}{secs}{sig_html(d)}</div></div>'
 
 def editorial_css(P):
     return f"""
@@ -441,7 +457,7 @@ def layout_cards(cfg, d, P):
     secs = "".join(section_block(cfg2, k, d, P, i)
                    for i, k in enumerate(cfg["sections"]["order"]))
     return (f'<div class="page">{page_shape_html(cfg, P)}<div class="pad">'
-            f'{header_html(cfg, d, P)}{secs}</div></div>')
+            f'{header_html(cfg, d, P)}{secs}{sig_html(d)}</div></div>')
 
 def layout_swiss(cfg, d, P):
     items = [
@@ -452,9 +468,11 @@ def layout_swiss(cfg, d, P):
         for k, v in items)
     secs = "".join(section_block(cfg, k, d, P, i)
                    for i, k in enumerate(cfg["sections"]["order"]))
-    return (f'<div class="page"><div class="pad"><div class="sw-grid" '
-            f'style="border-color:{P["rule"]}">{grid}</div>'
-            f'<div class="sw-rule" style="background:{P["ink"]}"></div>{secs}</div></div>')
+    photo = photo_html(cfg, d, P)
+    grid_html = (f'<div class="sw-grid" style="border-color:{P["rule"]}">{grid}</div>')
+    top = f'<div class="sw-top">{photo}{grid_html}</div>' if photo else grid_html
+    return (f'<div class="page"><div class="pad">{top}'
+            f'<div class="sw-rule" style="background:{P["ink"]}"></div>{secs}{sig_html(d)}</div></div>')
 
 def swiss_css(P):
     return f"""
@@ -464,6 +482,9 @@ def swiss_css(P):
 .sw-k{{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:{P['muted']};font-weight:700}}
 .sw-v{{font-size:13px;font-weight:600;margin-top:2px}}
 .sw-rule{{height:3px;margin:14px 0 22px}}
+.sw-top{{display:flex;gap:18px;align-items:center;margin-bottom:6px}}
+.sw-top .sw-grid{{flex:1;margin-bottom:0}}
+.sw-top .photo{{width:88px;height:88px;flex:none}}
 """
 
 def layout_creative(cfg, d, P):
@@ -475,7 +496,7 @@ def layout_creative(cfg, d, P):
             f'{photo}</header>')
     secs = "".join(section_block(cfg, k, d, P, i)
                    for i, k in enumerate(cfg["sections"]["order"]))
-    return f'<div class="page"><div class="pad">{head}{secs}</div></div>'
+    return f'<div class="page"><div class="pad">{head}{secs}{sig_html(d)}</div></div>'
 
 def creative_css(P):
     return f"""
@@ -488,7 +509,9 @@ def creative_css(P):
 
 def layout_compact(cfg, d, P):
     df = cfg["fonts"]["display"]
-    head = (f'<header class="cp-head"><div><div class="cp-name" style="font-family:\'{df}\',serif">'
+    photo = photo_html(cfg, d, P)
+    head_cls = "cp-head cp-head-photo" if photo else "cp-head"
+    head = (f'<header class="{head_cls}">{photo}<div><div class="cp-name" style="font-family:\'{df}\',serif">'
             f'{esc(d["name"])}</div><div class="cp-title" style="color:{P["accent"]}">'
             f'{esc(d["title"])}</div></div>'
             f'<div class="cp-contact">{esc(d["email"])} · {esc(d["phone"])}<br>'
@@ -498,7 +521,7 @@ def layout_compact(cfg, d, P):
     main = "".join(section_block(cfg, k, d, P, i) for i, k in enumerate(main_keys))
     side = "".join(section_block(cfg, k, d, P, i) for i, k in enumerate(side_keys))
     return (f'<div class="page"><div class="pad"><div class="cp-wrap">'
-            f'<div class="cp-main">{head}{main}</div>'
+            f'<div class="cp-main">{head}{main}{sig_html(d)}</div>'
             f'<div class="cp-side" style="border-color:{P["rule"]}">{side}</div>'
             f'</div></div></div>')
 
@@ -507,6 +530,8 @@ def compact_css(P):
 .cp-wrap{{display:grid;grid-template-columns:1.9fr 1fr;gap:26px}}
 .cp-side{{border-left:1px solid;padding-left:20px}}
 .cp-head{{margin-bottom:16px}}
+.cp-head-photo{{display:flex;gap:16px;align-items:center}}
+.cp-head-photo .photo{{width:72px;height:72px;flex:none}}
 .cp-name{{font-size:26px;font-weight:800}}
 .cp-title{{font-size:13px;font-weight:700;letter-spacing:.06em;margin-top:2px}}
 .cp-contact{{font-size:10.5px;color:{P['muted']};margin-top:8px;line-height:1.7}}
@@ -527,7 +552,7 @@ def render(cfg, data):
     css = (base_css(cfg, P) + section_title_css(cfg, P) + skills_css(cfg, P)
            + header_css(cfg, P) + bullets_css() + experience_css(P) + sections_css(P)
            + sidebar_css(P) + banner_css() + editorial_css(P) + swiss_css(P)
-           + creative_css(P) + compact_css(P))
+           + creative_css(P) + compact_css(P) + sig_css())
     body = LAYOUTS[cfg["layout"]](cfg, data, P)
     return f"""<!DOCTYPE html>
 <html lang="en">

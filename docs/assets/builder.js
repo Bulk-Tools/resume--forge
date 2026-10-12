@@ -76,8 +76,35 @@
     });
     data.certifications = lines($("f_certs").value);
     data.languages = lines($("f_langs").value);
+    if (uploads.photo) data.photoDataUrl = uploads.photo;
+    if (uploads.sig) data.signatureDataUrl = uploads.sig;
     return data;
   }
+
+  /* ---- photo + signature uploads ---- */
+  const uploads = { photo: "", sig: "" };
+  function bindUpload(inputId, prevId, clearId, key) {
+    const inp = $(inputId), prev = $(prevId), clear = $(clearId);
+    inp.addEventListener("change", () => {
+      const f = inp.files[0];
+      if (!f) return;
+      if (!f.type.startsWith("image/")) { inp.value = ""; return; }
+      const rd = new FileReader();
+      rd.onload = () => {
+        uploads[key] = String(rd.result);
+        prev.src = uploads[key]; prev.hidden = false; clear.hidden = false;
+        render();
+      };
+      rd.readAsDataURL(f);
+    });
+    clear.addEventListener("click", () => {
+      uploads[key] = ""; inp.value = "";
+      prev.src = ""; prev.hidden = true; clear.hidden = true;
+      render();
+    });
+  }
+  bindUpload("f_photo", "f_photo_prev", "f_photo_clear", "photo");
+  bindUpload("f_sig", "f_sig_prev", "f_sig_clear", "sig");
 
   /* ---- render ---- */
   let timer = null;
