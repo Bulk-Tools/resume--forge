@@ -1,0 +1,1589 @@
+[
+  {
+    "accents": {
+      "marker": "dash",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "IBM Plex Mono",
+      "display": "Space Grotesk"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 34,
+      "photo": "none",
+      "title_rule": "accent-bar"
+    },
+    "layout": "classic",
+    "name": "Cobalt Ledger",
+    "page": {
+      "accent": "#1D4ED8",
+      "accent2": "#06B6D4",
+      "bg": "#FFFFFF",
+      "ink": "#101828",
+      "muted": "#5B6B7F",
+      "rule": "#DCE4EF"
+    },
+    "persona": "Senior Backend Engineer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "upper",
+      "size": 13,
+      "style": "numbered",
+      "tracking": "0.18em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "projects",
+        "education",
+        "certifications",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#06B6D4",
+      "bg": "#101828",
+      "ink": "#FFFFFF",
+      "muted": "#9AA7BC"
+    },
+    "skills": {
+      "style": "bars"
+    },
+    "slug": "cobalt-ledger",
+    "tags": [
+      "modern",
+      "tech",
+      "ats-friendly"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "chevron",
+      "page_shape": "corners"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "card"
+    },
+    "fonts": {
+      "body": "Space Grotesk",
+      "display": "JetBrains Mono"
+    },
+    "header": {
+      "align": "center",
+      "name_size": 36,
+      "photo": "circle",
+      "title_rule": "none"
+    },
+    "layout": "banner",
+    "name": "Neon Terminal",
+    "page": {
+      "accent": "#22D3EE",
+      "accent2": "#F59E0B",
+      "bg": "#0B1220",
+      "ink": "#F1F5F9",
+      "muted": "#8FA3BF",
+      "rule": "#1E2A3F"
+    },
+    "persona": "Frontend Developer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 14,
+      "style": "band",
+      "tracking": "0.02em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "skills",
+        "experience",
+        "projects",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#22D3EE",
+      "bg": "#0B1220",
+      "ink": "#F1F5F9",
+      "muted": "#8FA3BF"
+    },
+    "skills": {
+      "style": "chips"
+    },
+    "slug": "neon-terminal",
+    "tags": [
+      "modern",
+      "bold",
+      "tech",
+      "with-photo"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "dot",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "timeline"
+    },
+    "fonts": {
+      "body": "Source Sans 3",
+      "display": "Sora"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 33,
+      "photo": "none",
+      "title_rule": "none"
+    },
+    "layout": "timeline",
+    "name": "Teal Trajectory",
+    "page": {
+      "accent": "#0D9488",
+      "accent2": "#D97706",
+      "bg": "#FFFFFF",
+      "ink": "#12242E",
+      "muted": "#5F7380",
+      "rule": "#D9E6E4"
+    },
+    "persona": "Data Scientist",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 13,
+      "style": "numbered",
+      "tracking": "0.04em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "education",
+        "projects",
+        "certifications"
+      ]
+    },
+    "sidebar": {
+      "accent": "#2DD4BF",
+      "bg": "#12242E",
+      "ink": "#FFFFFF",
+      "muted": "#A7BCC4"
+    },
+    "skills": {
+      "style": "dots"
+    },
+    "slug": "teal-trajectory",
+    "tags": [
+      "modern",
+      "tech",
+      "ats-friendly"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "none",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Inter",
+      "display": "Exo 2"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 30,
+      "photo": "rounded",
+      "title_rule": "accent-bar"
+    },
+    "layout": "sidebar-left",
+    "name": "Midnight Deploy",
+    "page": {
+      "accent": "#0369A1",
+      "accent2": "#F59E0B",
+      "bg": "#F8FAFC",
+      "ink": "#0F172A",
+      "muted": "#64748B",
+      "rule": "#E2E8F0"
+    },
+    "persona": "DevOps Engineer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "upper",
+      "size": 12,
+      "style": "sideline",
+      "tracking": "0.16em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "education",
+        "certifications",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#38BDF8",
+      "bg": "#0B1F3A",
+      "ink": "#FFFFFF",
+      "muted": "#B9C4D6"
+    },
+    "skills": {
+      "style": "levels"
+    },
+    "slug": "midnight-deploy",
+    "tags": [
+      "modern",
+      "two-column",
+      "tech",
+      "with-photo"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "square",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "card"
+    },
+    "fonts": {
+      "body": "Manrope",
+      "display": "Outfit"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 35,
+      "photo": "none",
+      "title_rule": "none"
+    },
+    "layout": "cards",
+    "name": "Cobalt Canvas",
+    "page": {
+      "accent": "#2563EB",
+      "accent2": "#F97316",
+      "bg": "#FFFFFF",
+      "ink": "#16233A",
+      "muted": "#64748B",
+      "rule": "#E3EAF6"
+    },
+    "persona": "Mobile App Developer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 13,
+      "style": "boxed",
+      "tracking": "0.03em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "skills",
+        "experience",
+        "projects",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#F97316",
+      "bg": "#16233A",
+      "ink": "#FFFFFF",
+      "muted": "#A9B6CC"
+    },
+    "skills": {
+      "style": "chips"
+    },
+    "slug": "cobalt-canvas",
+    "tags": [
+      "modern",
+      "creative",
+      "tech"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "square",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "JetBrains Mono",
+      "display": "Fira Sans"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 32,
+      "photo": "none",
+      "title_rule": "full-rule"
+    },
+    "layout": "classic",
+    "name": "Sentry Checklist",
+    "page": {
+      "accent": "#0E7490",
+      "accent2": "#B45309",
+      "bg": "#FFFFFF",
+      "ink": "#14333B",
+      "muted": "#60757B",
+      "rule": "#D7E3E6"
+    },
+    "persona": "QA Engineer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "upper",
+      "size": 12,
+      "style": "rule",
+      "tracking": "0.2em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "education",
+        "certifications",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#22D3EE",
+      "bg": "#14333B",
+      "ink": "#FFFFFF",
+      "muted": "#A9BFC5"
+    },
+    "skills": {
+      "style": "list"
+    },
+    "slug": "sentry-checklist",
+    "tags": [
+      "classic",
+      "tech",
+      "ats-friendly"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "none",
+      "page_shape": "dots"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Space Mono",
+      "display": "Space Grotesk"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 38,
+      "photo": "none",
+      "title_rule": "none"
+    },
+    "layout": "swiss",
+    "name": "Cipher Grid",
+    "page": {
+      "accent": "#1E3A8A",
+      "accent2": "#0891B2",
+      "bg": "#FFFFFF",
+      "ink": "#111827",
+      "muted": "#6B7280",
+      "rule": "#E5E7EB"
+    },
+    "persona": "Cybersecurity Analyst",
+    "sample": "engineer",
+    "section_title": {
+      "case": "upper",
+      "size": 10,
+      "style": "plain",
+      "tracking": "0.3em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "certifications",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#0891B2",
+      "bg": "#111827",
+      "ink": "#FFFFFF",
+      "muted": "#9CA3AF"
+    },
+    "skills": {
+      "style": "columns"
+    },
+    "slug": "cipher-grid",
+    "tags": [
+      "minimal",
+      "tech",
+      "ats-friendly"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "chevron",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "IBM Plex Mono",
+      "display": "Sora"
+    },
+    "header": {
+      "align": "center",
+      "name_size": 36,
+      "photo": "none",
+      "title_rule": "none"
+    },
+    "layout": "banner",
+    "name": "Signal Circuit",
+    "page": {
+      "accent": "#22D3EE",
+      "accent2": "#FBBF24",
+      "bg": "#071120",
+      "ink": "#E8EEF6",
+      "muted": "#8CA0B8",
+      "rule": "#1A2940"
+    },
+    "persona": "AI/ML Engineer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 14,
+      "style": "band",
+      "tracking": "0.03em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "projects",
+        "education",
+        "certifications"
+      ]
+    },
+    "sidebar": {
+      "accent": "#FBBF24",
+      "bg": "#071120",
+      "ink": "#E8EEF6",
+      "muted": "#8CA0B8"
+    },
+    "skills": {
+      "style": "bars"
+    },
+    "slug": "signal-circuit",
+    "tags": [
+      "modern",
+      "bold",
+      "tech"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "chevron",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Inter",
+      "display": "Archivo"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 31,
+      "photo": "square",
+      "title_rule": "accent-bar"
+    },
+    "layout": "sidebar-right",
+    "name": "Cumulus Blueprint",
+    "page": {
+      "accent": "#0284C7",
+      "accent2": "#F59E0B",
+      "bg": "#FFFFFF",
+      "ink": "#0F172A",
+      "muted": "#64748B",
+      "rule": "#DBEAF5"
+    },
+    "persona": "Cloud Architect",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 13,
+      "style": "sideline",
+      "tracking": "0.05em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "certifications",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#0284C7",
+      "bg": "#E0F2FE",
+      "ink": "#0C4A6E",
+      "muted": "#4E7E9E"
+    },
+    "skills": {
+      "style": "levels"
+    },
+    "slug": "cumulus-blueprint",
+    "tags": [
+      "modern",
+      "two-column",
+      "tech",
+      "with-photo"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "none",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "card"
+    },
+    "fonts": {
+      "body": "Work Sans",
+      "display": "Archivo Black"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 40,
+      "photo": "circle",
+      "title_rule": "none"
+    },
+    "layout": "cards",
+    "name": "Pixel Overdrive",
+    "page": {
+      "accent": "#00E5FF",
+      "accent2": "#FF6B35",
+      "bg": "#0F0A2A",
+      "ink": "#EDE9FE",
+      "muted": "#A79BCF",
+      "rule": "#2A2352"
+    },
+    "persona": "Game Developer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 15,
+      "style": "numbered",
+      "tracking": "0.02em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "skills",
+        "experience",
+        "projects",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#00E5FF",
+      "bg": "#0F0A2A",
+      "ink": "#EDE9FE",
+      "muted": "#A79BCF"
+    },
+    "skills": {
+      "style": "bars"
+    },
+    "slug": "pixel-overdrive",
+    "tags": [
+      "bold",
+      "creative",
+      "tech",
+      "with-photo"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "dash",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Public Sans",
+      "display": "Space Mono"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 34,
+      "photo": "none",
+      "title_rule": "none"
+    },
+    "layout": "swiss",
+    "name": "Firmware Foundry",
+    "page": {
+      "accent": "#155E75",
+      "accent2": "#B45309",
+      "bg": "#FFFFFF",
+      "ink": "#1A2B3C",
+      "muted": "#6E8296",
+      "rule": "#E2E8EE"
+    },
+    "persona": "Embedded Systems Engineer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "upper",
+      "size": 10,
+      "style": "plain",
+      "tracking": "0.28em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "education",
+        "projects",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#22D3EE",
+      "bg": "#1A2B3C",
+      "ink": "#FFFFFF",
+      "muted": "#9FB0C1"
+    },
+    "skills": {
+      "style": "columns"
+    },
+    "slug": "firmware-foundry",
+    "tags": [
+      "minimal",
+      "tech",
+      "ats-friendly"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "square",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Inter",
+      "display": "Bitter"
+    },
+    "header": {
+      "align": "right",
+      "name_size": 33,
+      "photo": "none",
+      "title_rule": "full-rule"
+    },
+    "layout": "classic",
+    "name": "Vault Keeper",
+    "page": {
+      "accent": "#1E40AF",
+      "accent2": "#D97706",
+      "bg": "#FFFFFF",
+      "ink": "#1F2937",
+      "muted": "#6B7280",
+      "rule": "#DDE3EE"
+    },
+    "persona": "Database Administrator",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 13,
+      "style": "boxed",
+      "tracking": "0.04em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "certifications",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#D97706",
+      "bg": "#1F2937",
+      "ink": "#FFFFFF",
+      "muted": "#A7B0BF"
+    },
+    "skills": {
+      "style": "dots"
+    },
+    "slug": "vault-keeper",
+    "tags": [
+      "classic",
+      "elegant",
+      "tech",
+      "ats-friendly"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "dash",
+      "page_shape": "none"
+    },
+    "density": "compact",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Source Sans 3",
+      "display": "JetBrains Mono"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 28,
+      "photo": "none",
+      "title_rule": "full-rule"
+    },
+    "layout": "compact",
+    "name": "Uptime Ledger",
+    "page": {
+      "accent": "#0E7490",
+      "accent2": "#F59E0B",
+      "bg": "#FFFFFF",
+      "ink": "#0F172A",
+      "muted": "#5B6B7F",
+      "rule": "#D9E4EA"
+    },
+    "persona": "Site Reliability Engineer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "upper",
+      "size": 11,
+      "style": "rule",
+      "tracking": "0.22em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "education",
+        "certifications"
+      ]
+    },
+    "sidebar": {
+      "accent": "#2DD4BF",
+      "bg": "#0F172A",
+      "ink": "#FFFFFF",
+      "muted": "#9AA7BC"
+    },
+    "skills": {
+      "style": "list"
+    },
+    "slug": "uptime-ledger",
+    "tags": [
+      "minimal",
+      "one-page",
+      "tech",
+      "ats-friendly"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "dot",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "card"
+    },
+    "fonts": {
+      "body": "Karla",
+      "display": "Sora"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 34,
+      "photo": "none",
+      "title_rule": "accent-bar"
+    },
+    "layout": "cards",
+    "name": "Stack Symmetry",
+    "page": {
+      "accent": "#4F46E5",
+      "accent2": "#06B6D4",
+      "bg": "#F8FAFC",
+      "ink": "#1E293B",
+      "muted": "#64748B",
+      "rule": "#E4E9F4"
+    },
+    "persona": "Full-Stack Developer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 13,
+      "style": "band",
+      "tracking": "0.03em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "skills",
+        "experience",
+        "projects",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#06B6D4",
+      "bg": "#1E293B",
+      "ink": "#FFFFFF",
+      "muted": "#A9B6CC"
+    },
+    "skills": {
+      "style": "chips"
+    },
+    "slug": "stack-symmetry",
+    "tags": [
+      "modern",
+      "creative",
+      "tech"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "chevron",
+      "page_shape": "diagonal"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Manrope",
+      "display": "Bebas Neue"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 44,
+      "photo": "rounded",
+      "title_rule": "none"
+    },
+    "layout": "creative",
+    "name": "Chain Reaction",
+    "page": {
+      "accent": "#22D3EE",
+      "accent2": "#F59E0B",
+      "bg": "#0A0F1E",
+      "ink": "#F1F5F9",
+      "muted": "#8FA3BF",
+      "rule": "#1C2740"
+    },
+    "persona": "Blockchain Developer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 15,
+      "style": "numbered",
+      "tracking": "0.03em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "projects",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#F59E0B",
+      "bg": "#0A0F1E",
+      "ink": "#F1F5F9",
+      "muted": "#8FA3BF"
+    },
+    "skills": {
+      "style": "chips"
+    },
+    "slug": "chain-reaction",
+    "tags": [
+      "bold",
+      "creative",
+      "tech",
+      "with-photo"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "dot",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Heebo",
+      "display": "Titillium Web"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 30,
+      "photo": "none",
+      "title_rule": "full-rule"
+    },
+    "layout": "sidebar-left",
+    "name": "Packet Path",
+    "page": {
+      "accent": "#0F766E",
+      "accent2": "#F59E0B",
+      "bg": "#FFFFFF",
+      "ink": "#102A43",
+      "muted": "#5B7186",
+      "rule": "#D8E4EA"
+    },
+    "persona": "Network Engineer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "upper",
+      "size": 12,
+      "style": "sideline",
+      "tracking": "0.14em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "certifications",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#2DD4BF",
+      "bg": "#0C2B3E",
+      "ink": "#EAF6F6",
+      "muted": "#A9C4CC"
+    },
+    "skills": {
+      "style": "bars"
+    },
+    "slug": "packet-path",
+    "tags": [
+      "modern",
+      "two-column",
+      "tech"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "none",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Public Sans",
+      "display": "Lexend"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 30,
+      "photo": "circle",
+      "title_rule": "none"
+    },
+    "layout": "sidebar-left",
+    "name": "Helpdesk Harbor",
+    "page": {
+      "accent": "#1D4ED8",
+      "accent2": "#F59E0B",
+      "bg": "#FFFFFF",
+      "ink": "#1F2937",
+      "muted": "#6B7280",
+      "rule": "#DEE6F2"
+    },
+    "persona": "IT Support Specialist",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 13,
+      "style": "band",
+      "tracking": "0.03em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "education",
+        "certifications",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#FBBF24",
+      "bg": "#1E3A5F",
+      "ink": "#FFFFFF",
+      "muted": "#B4C4DA"
+    },
+    "skills": {
+      "style": "levels"
+    },
+    "slug": "helpdesk-harbor",
+    "tags": [
+      "modern",
+      "two-column",
+      "tech",
+      "with-photo"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "chevron",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "timeline"
+    },
+    "fonts": {
+      "body": "Source Sans 3",
+      "display": "Archivo"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 32,
+      "photo": "none",
+      "title_rule": "accent-bar"
+    },
+    "layout": "timeline",
+    "name": "Systems Atlas",
+    "page": {
+      "accent": "#0369A1",
+      "accent2": "#C2410C",
+      "bg": "#FFFFFF",
+      "ink": "#1A2433",
+      "muted": "#617183",
+      "rule": "#D9E2EC"
+    },
+    "persona": "Systems Analyst",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 13,
+      "style": "rule",
+      "tracking": "0.05em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "education",
+        "projects",
+        "certifications"
+      ]
+    },
+    "sidebar": {
+      "accent": "#38BDF8",
+      "bg": "#1A2433",
+      "ink": "#FFFFFF",
+      "muted": "#A9B6C6"
+    },
+    "skills": {
+      "style": "columns"
+    },
+    "slug": "systems-atlas",
+    "tags": [
+      "modern",
+      "tech",
+      "ats-friendly"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "dash",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "PT Sans",
+      "display": "Source Serif 4"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 40,
+      "photo": "none",
+      "title_rule": "full-rule"
+    },
+    "layout": "editorial",
+    "name": "Docs Lighthouse",
+    "page": {
+      "accent": "#0E7490",
+      "accent2": "#B45309",
+      "bg": "#FFFFFF",
+      "ink": "#23272F",
+      "muted": "#6E747E",
+      "rule": "#E0E4E8"
+    },
+    "persona": "Technical Writer",
+    "sample": "general",
+    "section_title": {
+      "case": "title",
+      "size": 14,
+      "style": "plain",
+      "tracking": "0.02em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "education",
+        "projects",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#B45309",
+      "bg": "#23272F",
+      "ink": "#FFFFFF",
+      "muted": "#AEB4BE"
+    },
+    "skills": {
+      "style": "list"
+    },
+    "slug": "docs-lighthouse",
+    "tags": [
+      "elegant",
+      "classic",
+      "tech"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "dot",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "timeline"
+    },
+    "fonts": {
+      "body": "Inter",
+      "display": "Plus Jakarta Sans"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 33,
+      "photo": "circle",
+      "title_rule": "accent-bar"
+    },
+    "layout": "timeline",
+    "name": "Roadmap Orchestra",
+    "page": {
+      "accent": "#175CD3",
+      "accent2": "#F79009",
+      "bg": "#FFFFFF",
+      "ink": "#101828",
+      "muted": "#5B6B7F",
+      "rule": "#DCE4F2"
+    },
+    "persona": "Product Manager",
+    "sample": "general",
+    "section_title": {
+      "case": "title",
+      "size": 13,
+      "style": "numbered",
+      "tracking": "0.04em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "education",
+        "projects",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#F79009",
+      "bg": "#101828",
+      "ink": "#FFFFFF",
+      "muted": "#9AA7BC"
+    },
+    "skills": {
+      "style": "chips"
+    },
+    "slug": "roadmap-orchestra",
+    "tags": [
+      "modern",
+      "bold",
+      "tech",
+      "with-photo"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "square",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Work Sans",
+      "display": "Fraunces"
+    },
+    "header": {
+      "align": "center",
+      "name_size": 42,
+      "photo": "none",
+      "title_rule": "none"
+    },
+    "layout": "editorial",
+    "name": "Sprint Compass",
+    "page": {
+      "accent": "#0D7C8C",
+      "accent2": "#DC6803",
+      "bg": "#FFFFFF",
+      "ink": "#1F2A37",
+      "muted": "#66707C",
+      "rule": "#DEE5E8"
+    },
+    "persona": "Scrum Master",
+    "sample": "general",
+    "section_title": {
+      "case": "title",
+      "size": 14,
+      "style": "plain",
+      "tracking": "0.02em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "certifications",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#DC6803",
+      "bg": "#1F2A37",
+      "ink": "#FFFFFF",
+      "muted": "#A9B2BC"
+    },
+    "skills": {
+      "style": "columns"
+    },
+    "slug": "sprint-compass",
+    "tags": [
+      "elegant",
+      "modern",
+      "tech"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "square",
+      "page_shape": "none"
+    },
+    "density": "compact",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Barlow",
+      "display": "Barlow Condensed"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 30,
+      "photo": "none",
+      "title_rule": "accent-bar"
+    },
+    "layout": "compact",
+    "name": "Query Quarry",
+    "page": {
+      "accent": "#1D4ED8",
+      "accent2": "#06B6D4",
+      "bg": "#FFFFFF",
+      "ink": "#152238",
+      "muted": "#5F6E85",
+      "rule": "#DCE3F0"
+    },
+    "persona": "Data Analyst",
+    "sample": "engineer",
+    "section_title": {
+      "case": "upper",
+      "size": 11,
+      "style": "rule",
+      "tracking": "0.2em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "skills",
+        "experience",
+        "education",
+        "projects"
+      ]
+    },
+    "sidebar": {
+      "accent": "#06B6D4",
+      "bg": "#152238",
+      "ink": "#FFFFFF",
+      "muted": "#A4B2C8"
+    },
+    "skills": {
+      "style": "bars"
+    },
+    "slug": "query-quarry",
+    "tags": [
+      "minimal",
+      "one-page",
+      "tech",
+      "ats-friendly"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "none",
+      "page_shape": "wave"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Space Grotesk",
+      "display": "Outfit"
+    },
+    "header": {
+      "align": "left",
+      "name_size": 38,
+      "photo": "circle",
+      "title_rule": "none"
+    },
+    "layout": "creative",
+    "name": "Interface Ion",
+    "page": {
+      "accent": "#67E8F6",
+      "accent2": "#FDB022",
+      "bg": "#101828",
+      "ink": "#F9FAFB",
+      "muted": "#98A2B3",
+      "rule": "#243042"
+    },
+    "persona": "UI Engineer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 14,
+      "style": "band",
+      "tracking": "0.03em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "skills",
+        "experience",
+        "projects",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#67E8F6",
+      "bg": "#101828",
+      "ink": "#F9FAFB",
+      "muted": "#98A2B3"
+    },
+    "skills": {
+      "style": "chips"
+    },
+    "slug": "interface-ion",
+    "tags": [
+      "bold",
+      "creative",
+      "tech",
+      "with-photo"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "chevron",
+      "page_shape": "arch"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "IBM Plex Mono",
+      "display": "Manrope"
+    },
+    "header": {
+      "align": "right",
+      "name_size": 31,
+      "photo": "square",
+      "title_rule": "accent-bar"
+    },
+    "layout": "sidebar-right",
+    "name": "Solution Spire",
+    "page": {
+      "accent": "#1E40AF",
+      "accent2": "#D97706",
+      "bg": "#FFFFFF",
+      "ink": "#1B2A41",
+      "muted": "#5F7186",
+      "rule": "#DCE2F0"
+    },
+    "persona": "Solutions Architect",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 13,
+      "style": "boxed",
+      "tracking": "0.04em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "experience",
+        "skills",
+        "certifications",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#38BDF8",
+      "bg": "#102A43",
+      "ink": "#FFFFFF",
+      "muted": "#A9BCD2"
+    },
+    "skills": {
+      "style": "levels"
+    },
+    "slug": "solution-spire",
+    "tags": [
+      "modern",
+      "two-column",
+      "tech",
+      "with-photo"
+    ]
+  },
+  {
+    "accents": {
+      "marker": "dot",
+      "page_shape": "none"
+    },
+    "density": "comfortable",
+    "experience": {
+      "style": "standard"
+    },
+    "fonts": {
+      "body": "Nunito",
+      "display": "Space Grotesk"
+    },
+    "header": {
+      "align": "center",
+      "name_size": 34,
+      "photo": "rounded",
+      "title_rule": "none"
+    },
+    "layout": "banner",
+    "name": "First Commit",
+    "page": {
+      "accent": "#0284C7",
+      "accent2": "#F59E0B",
+      "bg": "#F0F9FF",
+      "ink": "#0C1A2B",
+      "muted": "#5B6E82",
+      "rule": "#CDE6F5"
+    },
+    "persona": "Junior Web Developer",
+    "sample": "engineer",
+    "section_title": {
+      "case": "title",
+      "size": 13,
+      "style": "sideline",
+      "tracking": "0.05em"
+    },
+    "sections": {
+      "order": [
+        "summary",
+        "skills",
+        "experience",
+        "projects",
+        "education",
+        "languages"
+      ]
+    },
+    "sidebar": {
+      "accent": "#F59E0B",
+      "bg": "#0C1A2B",
+      "ink": "#FFFFFF",
+      "muted": "#9DB2C6"
+    },
+    "skills": {
+      "style": "dots"
+    },
+    "slug": "first-commit",
+    "tags": [
+      "modern",
+      "creative",
+      "tech",
+      "with-photo"
+    ]
+  }
+]

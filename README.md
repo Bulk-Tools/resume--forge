@@ -6,8 +6,7 @@
 
 | Path | What it is |
 |---|---|
-| `docs/` | Live website (GitHub Pages): template gallery + resume builder. Start at `docs/index.html`. |
-| `docs/templates/<slug>/` | 100 rendered, standalone A4 resume templates (open any `index.html` directly). |
+| `docs/` | Live website (GitHub Pages): template gallery + resume builder. Start at `docs/index.html`. Previews render live in the browser from the configs. |
 | `docs/registry.json` | Machine-readable catalog of all 100 templates. |
 | `templates/configs/` | The 100 template design configs (JSON) — the source of truth. |
 | `templates/registry.json` | Merged + validated registry. |
