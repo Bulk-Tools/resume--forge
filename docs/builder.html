@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ResumeForge Builder</title>
+<meta name="description" content="Fill in your details and watch your résumé render live in any of 100 templates. Print to PDF when ready.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%">
+    <a class="brand" href="index.html">Resume<em>Forge</em></a>
+    <nav>
+      <a href="index.html">Gallery</a>
+      <a href="builder.html" class="active">Builder</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="builder-head">
+    <a class="back" href="index.html">← Gallery</a>
+    <select id="tpl" aria-label="Choose a template"></select>
+    <span class="spacer"></span>
+    <button class="btn" id="sampleBtn" type="button">Load sample data</button>
+    <button class="btn primary" id="printBtn" type="button">Print / Save PDF</button>
+    <div class="tpl-info" id="tplInfo"></div>
+  </div>
+
+  <div class="builder-main">
+    <form class="form-panel" id="form" autocomplete="off" onsubmit="return false">
+      <fieldset>
+        <legend>Header</legend>
+        <div class="field"><label for="f_name">Full name</label><input id="f_name" data-k="name"></div>
+        <div class="field"><label for="f_title">Professional title</label><input id="f_title" data-k="title"></div>
+        <div class="field"><label for="f_email">Email</label><input id="f_email" data-k="email"></div>
+        <div class="field"><label for="f_phone">Phone</label><input id="f_phone" data-k="phone"></div>
+        <div class="field"><label for="f_location">Location</label><input id="f_location" data-k="location"></div>
+        <div class="field"><label for="f_website">Website</label><input id="f_website" data-k="website"></div>
+        <div class="field"><label for="f_linkedin">LinkedIn</label><input id="f_linkedin" data-k="linkedin"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Profile</legend>
+        <div class="field"><label for="f_summary">Summary</label><textarea id="f_summary" data-k="summary" rows="4"></textarea></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Experience</legend>
+        <div id="expWrap"></div>
+        <div class="field"><div class="hint">Leave a role empty to skip that entry. One bullet per line.</div></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Education</legend>
+        <div id="eduWrap"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Skills</legend>
+        <div class="field"><label for="f_skills">Skills</label>
+          <textarea id="f_skills" rows="5" placeholder="Python:90&#10;Figma:75"></textarea>
+          <div class="hint">One per line, as <b>Name:level</b> (level 0–100, optional — defaults to 70).</div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Projects</legend>
+        <div class="field"><label for="f_projects">Projects</label>
+          <textarea id="f_projects" rows="3" placeholder="LedgerCore | Open-source ledger engine"></textarea>
+          <div class="hint">One per line, as <b>Name | detail</b>.</div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>More</legend>
+        <div class="field"><label for="f_certs">Certifications</label><textarea id="f_certs" rows="2"></textarea><div class="hint">One per line.</div></div>
+        <div class="field"><label for="f_langs">Languages</label><textarea id="f_langs" rows="2"></textarea><div class="hint">One per line.</div></div>
+      </fieldset>
+    </form>
+
+    <div class="preview-panel">
+      <div class="preview-bar"><span>Live preview — A4</span><span id="pageNote"></span></div>
+      <div class="preview-frame"><iframe id="preview" title="Résumé preview"></iframe></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/samples.js"></script>
+<script src="assets/renderer.js"></script>
+<script src="assets/builder.js"></script>
+</body>
+</html>

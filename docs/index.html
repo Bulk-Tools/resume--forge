@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ResumeForge — 100 Résumé Templates</title>
+<meta name="description" content="Browse 100 premium résumé templates across 10 layout families. Preview any design, then build your résumé in the live builder.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%">
+    <a class="brand" href="index.html">Resume<em>Forge</em></a>
+    <nav>
+      <a href="index.html" class="active">Gallery</a>
+      <a href="builder.html">Builder</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">The template library</div>
+    <h1>One hundred résumés, <span class="it">each with its own point of view.</span></h1>
+    <p class="lede">No generic fillers. Every template is designed for a real profession — pick one, preview it live, then make it yours in the builder. Print to PDF when it looks right.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">100</div><div class="l">Templates</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">Layout families</div></div>
+      <div class="stat"><div class="n">39<small>+</small></div><div class="l">Typefaces</div></div>
+      <div class="stat"><div class="n">A4</div><div class="l">Print-ready</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="row">
+      <label class="search">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="q" type="search" placeholder="Search templates, professions, styles…" autocomplete="off">
+      </label>
+      <select id="layout" class="filter" aria-label="Filter by layout">
+        <option value="">All layouts</option>
+      </select>
+      <select id="sort" class="filter" aria-label="Sort">
+        <option value="featured">Featured order</option>
+        <option value="az">Name A–Z</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%">
+    <span>ResumeForge — 100 templates, one builder, zero subscriptions.</span>
+    <span>Tip: open any template to edit it live.</span>
+  </div>
+</footer>
+
+<script src="assets/samples.js"></script>
+<script src="assets/renderer.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
