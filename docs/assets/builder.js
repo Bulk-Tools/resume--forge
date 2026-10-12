@@ -159,6 +159,32 @@
     catch (e) { alert("Could not open the print dialog for the preview."); }
   });
 
+  /* One-click PDF download (no print dialog): rasterize the A4 page to PDF. */
+  $("pdfBtn").addEventListener("click", async () => {
+    const btn = $("pdfBtn");
+    if (typeof html2pdf === "undefined") { alert("PDF engine is still loading — try again in a moment."); return; }
+    btn.disabled = true;
+    const old = btn.textContent; btn.textContent = "Preparing…";
+    try {
+      const doc = frame.contentDocument;
+      const page = doc && doc.querySelector(".page");
+      if (!page) throw new Error("preview not ready");
+      try { await doc.fonts.ready; } catch (e) {}
+      const nm = (collectData().name || "").trim().replace(/[^\w\- ]+/g, "").replace(/\s+/g, "-") || "resume";
+      await html2pdf().set({
+        margin: 0,
+        filename: nm + "-resume.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, logging: false },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+      }).from(page).save();
+    } catch (e) {
+      alert("Could not generate the PDF. Try the Print button instead.");
+    } finally {
+      btn.disabled = false; btn.textContent = old;
+    }
+  });
+
   /* Fullscreen preview toggle (mobile: form + preview visible together). */
   $("expandBtn").addEventListener("click", () => {
     const on = document.body.classList.toggle("preview-full");

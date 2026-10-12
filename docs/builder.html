@@ -27,7 +27,8 @@
     <select id="tpl" aria-label="Choose a template"></select>
     <span class="spacer"></span>
     <button class="btn" id="sampleBtn" type="button">Load sample data</button>
-    <button class="btn primary" id="printBtn" type="button">Print / Save PDF</button>
+    <button class="btn primary" id="pdfBtn" type="button">Download PDF</button>
+    <button class="btn" id="printBtn" type="button">Print</button>
     <div class="tpl-info" id="tplInfo"></div>
   </div>
 
@@ -108,6 +109,7 @@
 
 <script src="assets/samples.js"></script>
 <script src="assets/renderer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.3/dist/html2pdf.bundle.min.js"></script>
 <script src="assets/builder.js"></script>
 </body>
 </html>
