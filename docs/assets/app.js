@@ -114,6 +114,8 @@
     .then(r => { if (!r.ok) throw new Error("registry " + r.status); return r.json(); })
     .then(reg => {
       registry = reg;
+      const sc = document.getElementById("statCount");
+      if (sc) sc.textContent = reg.length;
       topTags(reg, 14).forEach(tag => {
         const b = document.createElement("button");
         b.className = "chip"; b.textContent = tag;
